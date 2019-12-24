@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include"init.c"
+#include"judge.c"
+
+int main()
+{
+int x=0;
+	init_board();
+	display_board();
+	set_bchess();//B1
+	display_board();
+	set_wchess();//W1
+	display_board();
+	set_bchess();//B2
+	display_board();
+	set_wchess();//W2
+	display_board();
+	set_bchess();//B3
+	display_board();
+	set_wchess();//W3
+	display_board();
+	set_bchess();//B4
+	display_board();
+	set_wchess();//W4
+	display_board();
+	set_bchess();//B5
+	display_board();
+	set_wchess();//W5
+	display_board();
+	set_bchess();//B6
+	display_board();
+	set_wchess();//W6
+	display_board();
+	set_bchess();//B7
+	display_board();
+	set_wchess();//W7
+	display_board();
+	set_bchess();//B8
+	display_board();
+	set_wchess();//W8
+	display_board();
+	set_bchess();//B9
+	display_board();
+	set_wchess();//W9
+	display_board();
+	set_bchess();//B10
+	display_board();
+	set_wchess();//W10
+	display_board();
+
+	set_bchess();//B11
+	display_board();
+	set_wchess();//W11
+	display_board();
+	set_bchess();//B12
+	display_board();
+	set_wchess();//W12
+	display_board();
+	set_bchess();//B13
+	display_board();
+	set_wchess();//W13
+	display_board();
+	set_bchess();//B14
+	display_board();
+	set_wchess();//W14
+	display_board();
+	set_bchess();//B15
+	display_board();
+	set_wchess();//W15
+	display_board();
+	set_bchess();//B16
+	display_board();
+	set_wchess();//W16
+	display_board();
+	set_bchess();//B17
+	display_board();
+	set_wchess();//W17
+	display_board();
+	set_bchess();//B18
+	display_board();
+	set_wchess();//W18
+	display_board();
+	set_bchess();//B19
+	display_board();
+	set_wchess();//W19
+	display_board();
+	set_bchess();//B20
+	display_board();
+	set_wchess();//W20
+	display_board();
+	x=battack(bchess[bnum-1]);
+printf("\n%d",x);
+	return 0;
+}
