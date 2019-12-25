@@ -1,94 +1,58 @@
 #include<stdio.h>
 #include"init.c"
-#include"judge.c"
+#include"battack.c"
 
 int main()
 {
 int x=0;
+int i=0;
 	init_board();
 	display_board();
 	set_bchess();//B1
 	display_board();
+printf("bnum:%d	",bnum);
+for(i=bnum;i>0;i--)
+printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
+
 	set_wchess();//W1
 	display_board();
-	set_bchess();//B2
+
+	battack();//B2
+	
 	display_board();
+printf("bnum:%d	",bnum);
+for(i=bnum;i>0;i--)
+printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
+
+
 	set_wchess();//W2
 	display_board();
-	set_bchess();//B3
-	display_board();
-	set_wchess();//W3
-	display_board();
-	set_bchess();//B4
-	display_board();
-	set_wchess();//W4
-	display_board();
-	set_bchess();//B5
-	display_board();
-	set_wchess();//W5
-	display_board();
-	set_bchess();//B6
-	display_board();
-	set_wchess();//W6
-	display_board();
-	set_bchess();//B7
-	display_board();
-	set_wchess();//W7
-	display_board();
-	set_bchess();//B8
-	display_board();
-	set_wchess();//W8
-	display_board();
-	set_bchess();//B9
-	display_board();
-	set_wchess();//W9
-	display_board();
-	set_bchess();//B10
-	display_board();
-	set_wchess();//W10
+
+	battack();//B3
+printf("bnum:%d	",bnum);
+for(i=bnum;i>0;i--)
+printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
+
 	display_board();
 
-	set_bchess();//B11
+	set_wchess();//W3
 	display_board();
-	set_wchess();//W11
+
+/*	battack();//B4
 	display_board();
-	set_bchess();//B12
+
+	set_wchess();//W4
 	display_board();
-	set_wchess();//W12
+
+	battack();//B5
 	display_board();
-	set_bchess();//B13
+
+	set_wchess();//W5
 	display_board();
-	set_wchess();//W13
+
+	battack();//B6
 	display_board();
-	set_bchess();//B14
-	display_board();
-	set_wchess();//W14
-	display_board();
-	set_bchess();//B15
-	display_board();
-	set_wchess();//W15
-	display_board();
-	set_bchess();//B16
-	display_board();
-	set_wchess();//W16
-	display_board();
-	set_bchess();//B17
-	display_board();
-	set_wchess();//W17
-	display_board();
-	set_bchess();//B18
-	display_board();
-	set_wchess();//W18
-	display_board();
-	set_bchess();//B19
-	display_board();
-	set_wchess();//W19
-	display_board();
-	set_bchess();//B20
-	display_board();
-	set_wchess();//W20
-	display_board();
-	x=battack(bchess[bnum-1]);
-printf("\n%d",x);
 	return 0;
+*/
+
 }

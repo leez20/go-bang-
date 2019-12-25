@@ -1,8 +1,14 @@
-int judgexx1(struct chess black);//judge ????b
-int judgexx2(struct chess black);//judge b????
+/*struct chess{
+	int x;
+	int y;
+	};
+*/
+
+int bajudur1(struct chess black);//judge ????b
+int bajudur2(struct chess black);//judge b????
 
 
-int judgexx1(struct chess black){
+int bajudur1(struct chess black){
 int x0=black.x,y0=black.y;
 int A,B,C,D;
 int b=y0+x0,Y,X;
@@ -15,8 +21,6 @@ if(Y>SIZE-1 || X<0)
 	break;
 }
 
-
-int A,B,C,D;
 if(i==1)//b
 	{
 	A=0;
@@ -33,7 +37,7 @@ else if(i==2)//?b
 	}
 else if(i==3)//??b
 	{
-	A=board[y0+1][x-1];
+	A=board[y0+1][x0-1];
 	B=board[y0+2][x0-2];
 	C=0;
 	D=0;
@@ -199,7 +203,7 @@ else//b???b
 
 
 
-int judgexx2(struct chess black){
+int bajudur2(struct chess black){
 int x0=black.x,y0=black.y;
 int A,B,C,D;
 int b=y0+x0,Y,X;

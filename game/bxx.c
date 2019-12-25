@@ -1,8 +1,13 @@
-int judgexx1(struct chess black);//judge ????b
-int judgexx2(struct chess black);//judge b????
+/*struct chess{
+	int x;
+	int y;
+	};
+*/
+int bajudxx1(struct chess black);//judge ????b
+int bajudxx2(struct chess black);//judge b????
 
 
-int judgexx1(struct chess black){
+int bajudxx1(struct chess black){
 int x=black.x,y=black.y;
 int A,B,C,D;
 if(x==0)//b
@@ -187,7 +192,7 @@ else//b???b
 
 
 
-int judgexx2(struct chess black){
+int bajudxx2(struct chess black){
 int x=black.x,y=black.y;
 int A,B,C,D;
 if(x==14)
