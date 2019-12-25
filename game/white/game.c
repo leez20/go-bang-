@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include"init.c"
-#include"wattack.c"
+#include"battack.c"
 
 int main()
 {
@@ -14,15 +14,6 @@ int i=0;
 
 	wattack();//B1
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
-
 
 	set_bchess();//W1
 	display_board();
@@ -30,55 +21,23 @@ printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 	wattack();
 	display_board();
 
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
-
 	set_bchess();//W1
 	display_board();
 
 	wattack();//B2
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
 
 	set_bchess();//W2
 	display_board();
 	
 	wattack();//B3
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
 
 	set_bchess();//W3
 	display_board();
 
 	wattack();//B4
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	set_bchess();//W4
 	display_board();
@@ -87,13 +46,24 @@ printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	wattack();//B5
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
 
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
+	set_bchess();//W5
+	display_board();
+
+	wattack();//B6
+	display_board();
+
+	set_bchess();//W5
+	display_board();
+
+	wattack();//B6
+	display_board();
+
+	set_bchess();//W5
+	display_board();
+
+	wattack();//B6
+	display_board();
 
 
 	set_bchess();//W5
@@ -101,121 +71,49 @@ printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	wattack();//B6
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	set_bchess();//W5
 	display_board();
 
 	wattack();//B6
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
 
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	set_bchess();//W5
 	display_board();
 
 	wattack();//B6
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	set_bchess();//W5
 	display_board();
 
 	wattack();//B6
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
 
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	set_bchess();//W5
 	display_board();
 
 	wattack();//B6
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
 
 	set_bchess();//W5
 	display_board();
 
 	wattack();//B6
 	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
-	set_bchess();//W5
-	display_board();
-
-	wattack();//B6
-	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
-	set_bchess();//W5
-	display_board();
-
-	wattack();//B6
-	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
-	set_bchess();//W5
-	display_board();
-
-	wattack();//B6
-	display_board();
-printf("wnum:%d	",wnum);
-for(i=wnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
-
-printf("bnum:%d	",bnum);
-for(i=bnum;i>0;i--)
-printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
-
-
 
 	return 0;
-
-
 }
+/*
+printf("wnum:%d	",wnum);
+for(i=wnum;i>0;i--)
+printf("\ny,x:%d,%c\n",SIZE-wchess[i-1].y,wchess[i-1].x+'A');
+
+printf("bnum:%d	",bnum);
+for(i=bnum;i>0;i--)
+printf("\ny,x:%d,%c\n",SIZE-bchess[i-1].y,bchess[i-1].x+'A');
+*/
+
+
