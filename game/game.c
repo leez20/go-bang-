@@ -10,9 +10,12 @@ int i=0;
 	display_board();
 	set_bchess();//B1
 	display_board();
+
+/*
 printf("bnum:%d	",bnum);
 for(i=bnum;i>0;i--)
 printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
+*/
 
 	set_wchess();//W1
 	display_board();
@@ -20,25 +23,30 @@ printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
 	battack();//B2
 	
 	display_board();
+
+/*
 printf("bnum:%d	",bnum);
 for(i=bnum;i>0;i--)
 printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
 
-
+*/
 	set_wchess();//W2
 	display_board();
 
 	battack();//B3
+
+/*
 printf("bnum:%d	",bnum);
 for(i=bnum;i>0;i--)
 printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
+*/
 
 	display_board();
 
 	set_wchess();//W3
 	display_board();
 
-/*	battack();//B4
+	battack();//B4
 	display_board();
 
 	set_wchess();//W4
@@ -52,7 +60,8 @@ printf("y,x:%d,%c\n",SIZE-bchess[bnum-1].y,bchess[bnum-1].x+'A');
 
 	battack();//B6
 	display_board();
+
 	return 0;
-*/
+
 
 }
