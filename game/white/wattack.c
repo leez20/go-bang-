@@ -1,4 +1,4 @@
-#include"bajud.c"
+#include"wajud.c"
 
 
 int Max(int x1,int x2,int x3,int x4)
@@ -9,8 +9,8 @@ y2= (x3>x4?x3:x4);
 return y1>y2?y1:y2;
 }
 
-void battack(void){
-struct chess black,success,full4,half4,full3[6],half3[6],full2[10],half2[10], full1[10],half1;
+void wattack(void){
+struct chess white,success,full4,half4,full3[6],half3[6],full2[10],half2[10], full1[10],half1;
 int ful3=0,ful2=0,ful1=0;//full
 int hal3=0,hal2=0;//half
 
@@ -58,7 +58,6 @@ y2=(y2<3?y2+3:y2);
 if(y2==14)
 y1=(y1>11?y1-3:y1);
 
-
 int value[4]={0};
 int i,j;
 int blank=0;
@@ -70,80 +69,80 @@ for(i=x1;i<=x2;i++)
 		blank=board[j][i];
 		if(blank <10)
 		{
-		black.x=i;
-		black.y=j;
-		value[0]=baxxjud(black);
-		value[1]=bayyjud(black);
-		value[2]=bauljud(black);
-		value[3]=baurjud(black);
+		white.x=i;
+		white.y=j;
+		value[0]=waxxjud(white);
+		value[1]=wayyjud(white);
+		value[2]=wauljud(white);
+		value[3]=waurjud(white);
 		if(Max(value[0],value[1],value[2],value[3])==9)
 			{
-			success=black;
+			success=white;
 			max=9;
 			break;
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==8 )
 			{
-			full4=black;
+			full4=white;
 			max=(max>8?max:8);
 			break;
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==7)
 			{
-			half4=black;
+			half4=white;
 			max=(max>7?max:7);
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==6)
 			{
 			if(ful3<6)
-				full3[ful3++]=black;
+				full3[ful3++]=white;
 			else 
-				full3[5]=black;
+				full3[5]=white;
 			max=(max>6?max:6);
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==5)
 			{
 			if(hal3<6)
-				half3[hal3++]=black;
+				half3[hal3++]=white;
 			else
-				half3[5]=black;
+				half3[5]=white;
 			max=(max>5?max:5);
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==4)
 			{
 			if(ful2<10)
-				full2[ful2++]=black;
+				full2[ful2++]=white;
 			else
-				full2[9]=black;
+				full2[9]=white;
 			max=(max>4?max:4);
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==3)
 			{
 			if(hal2<10)
-				half2[hal2++]=black;
+				half2[hal2++]=white;
 			else
-				half2[9]=black;
+				half2[9]=white;
 			max=(max>3?max:3);
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==2)
 			{
 			if(ful1<10)
-				full1[ful1++]=black;
+				full1[ful1++]=white;
 			else
-				full1[9]=black;
+				full1[9]=white;
 			max=(max>2?max:2);
 			}
 
 		else if(Max(value[0],value[1],value[2],value[3])==1)
 			{
-			half1=black;
+			half1=white;
 			max=(max>1?max:1);
 			}
 		}
@@ -153,56 +152,56 @@ for(i=x1;i<=x2;i++)
 	switch(max)
 	{
 	case 9:
-		board[success.y][success.x]=11;
-		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=success;
+		board[success.y][success.x]=13;
+		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=success;
 		break;
 	case 8:
-		board[full4.y][full4.x]=11;
-		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=full4;
+		board[full4.y][full4.x]=13;
+		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=full4;
 		break;
 	case 7:
-		board[half4.y][half4.x]=11;
-		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=half4;
+		board[half4.y][half4.x]=13;
+		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=half4;
 		break;
 	case 6:
 		A=A%ful3;
-		board[full3[A].y][full3[A].x]=11;
-		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=full3[A];
+		board[full3[A].y][full3[A].x]=13;
+		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=full3[A];
 		break;
 	case 5:
 		A=A%hal3;
-		board[half3[A].y][half3[A].x]=11;
-		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=half3[A];
+		board[half3[A].y][half3[A].x]=13;
+		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=half3[A];
 		break;
 	case 4:
 		A=A%ful2;
-		board[full2[A].y][full2[A].x]=11;
-		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=full2[A];
+		board[full2[A].y][full2[A].x]=13;
+		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=full2[A];
 		break;
 	case 3:
 		A=A%hal2;
-		board[half2[A].y][half2[A].x]=11;
-		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=half2[A];
+		board[half2[A].y][half2[A].x]=13;
+		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=half2[A];
 		break;
 	case 2:
 		A=A%ful1;
-		board[full1[A].y][full1[A].x]=11;
-		if(bnum)
-			board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=full1[A];
+		board[full1[A].y][full1[A].x]=13;
+		if(wnum)
+			board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=full1[A];
 		break;
 	case 1:
-		board[half1.y][half1.x]=11;
-		if(bnum)	
-			board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=half1;
+		board[half1.y][half1.x]=13;
+		if(wnum)	
+			board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
+		wchess[wnum++]=half1;
 		break;
 	default :break;
 	}
