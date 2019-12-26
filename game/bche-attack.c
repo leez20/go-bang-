@@ -13,7 +13,6 @@ return y1>y2?y1:y2;
 struct chess black,bsuccess,bfull4,bhalf4,bfull3[6],bhalf3[6],bfull2[10],bhalf2[10], bfull1[10],bhalf1;
 int bful3,bful2,bful1;//full
 int bhal3,bhal2;//half
-static int A=3;//random function x
 
 struct chess white,wsuccess,wfull4,whalf4,wfull3[6],whalf3[6],wfull2[10],whalf2[10], wfull1[10],whalf1;
 int wful3,wful2,wful1;//full
@@ -85,7 +84,6 @@ int blank=0;
 for(i=x1;i<=x2;i++)
 	for(j=y1;j<=y2;j++)
 	{
-		A++;
 		blank=board[j][i];
 		if(blank <10)
 		{
@@ -228,7 +226,6 @@ for(i=x1;i<=x2;i++)
 		blank=board[j][i];
 		if(blank <10)
 		{
-		A++;
 		white.x=i;
 		white.y=j;
 		value[0]=waxxjud(white);
@@ -313,6 +310,7 @@ return max;
 
 
 void battack(void){
+int random=rand()%11;// get random integer
 int max1,max2;
 max1=binfo();
 max2=winfo();
@@ -336,35 +334,35 @@ if(max1>=max2)
 		bchess[bnum++]=bhalf4;
 		break;
 	case 6:
-		A=A%bful3;
-		board[bfull3[A].y][bfull3[A].x]=11;
+		random=random%bful3;
+		board[bfull3[random].y][bfull3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=bfull3[A];
+		bchess[bnum++]=bfull3[random];
 		break;
 	case 5:
-		A=A%bhal3;
-		board[bhalf3[A].y][bhalf3[A].x]=11;
+		random=random%bhal3;
+		board[bhalf3[random].y][bhalf3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=bhalf3[A];
+		bchess[bnum++]=bhalf3[random];
 		break;
 	case 4:
-		A=A%bful2;
-		board[bfull2[A].y][bfull2[A].x]=11;
+		random=random%bful2;
+		board[bfull2[random].y][bfull2[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=bfull2[A];
+		bchess[bnum++]=bfull2[random];
 		break;
 	case 3:
-		A=A%bhal2;
-		board[bhalf2[A].y][bhalf2[A].x]=11;
+		random=random%bhal2;
+		board[bhalf2[random].y][bhalf2[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=bhalf2[A];
+		bchess[bnum++]=bhalf2[random];
 		break;
 	case 2:
-		A=A%bful1;
-		board[bfull1[A].y][bfull1[A].x]=11;
+		random=random%bful1;
+		board[bfull1[random].y][bfull1[random].x]=11;
 		if(bnum)
 			board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=bfull1[A];
+		bchess[bnum++]=bfull1[random];
 		break;
 	case 1:
 		board[bhalf1.y][bhalf1.x]=11;
@@ -393,35 +391,37 @@ switch(max2)
 		bchess[bnum++]=whalf4;
 		break;
 	case 6:
-		A=A%wful3;
-		board[wfull3[A].y][wfull3[A].x]=11;
+		random=random%wful3;
+		board[wfull3[random].y][wfull3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[wnum-1].x]=10;
-		bchess[bnum++]=wfull3[A];
+		bchess[bnum++]=wfull3[random];
 		break;
 	case 5:
-		A=A%whal3;
-		board[whalf3[A].y][whalf3[A].x]=11;
+		random=random%whal3;
+		board[whalf3[random].y][whalf3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=whalf3[A];
+		bchess[bnum++]=whalf3[random];
 		break;
 	case 4:
-		A=A%wful2;
-		board[wfull2[A].y][wfull2[A].x]=11;
+		random=random%wful2;
+		board[wfull2[random].y][wfull2[random].x]=11;
+		if(bnum)
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=wfull2[A];
+		bchess[bnum++]=wfull2[random];
 		break;
 	case 3:
-		A=A%whal2;
-		board[whalf2[A].y][whalf2[A].x]=11;
+		random=random%whal2;
+		board[whalf2[random].y][whalf2[random].x]=11;
+		if(bnum)
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=whalf2[A];
+		bchess[bnum++]=whalf2[random];
 		break;
 	case 2:
-		A=A%wful1;
-		board[wfull1[A].y][wfull1[A].x]=11;
+		random=random%wful1;
+		board[wfull1[random].y][wfull1[random].x]=11;
 		if(bnum)
 			board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=wfull1[A];
+		bchess[bnum++]=wfull1[random];
 		break;
 	case 1:
 		board[whalf1.y][whalf1.x]=11;
@@ -434,64 +434,3 @@ switch(max2)
 
 }
 
-
-
-
-/*	switch(max)
-	{
-	case 9:
-		board[success.y][success.x]=13;
-		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=success;
-		break;
-	case 8:
-		board[full4.y][full4.x]=13;
-		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=full4;
-		break;
-	case 7:
-		board[half4.y][half4.x]=13;
-		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=half4;
-		break;
-	case 6:
-		A=A%ful3;
-		board[full3[A].y][full3[A].x]=13;
-		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=full3[A];
-		break;
-	case 5:
-		A=A%hal3;
-		board[half3[A].y][half3[A].x]=13;
-		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=half3[A];
-		break;
-	case 4:
-		A=A%ful2;
-		board[full2[A].y][full2[A].x]=13;
-		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=full2[A];
-		break;
-	case 3:
-		A=A%hal2;
-		board[half2[A].y][half2[A].x]=13;
-		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=half2[A];
-		break;
-	case 2:
-		A=A%ful1;
-		board[full1[A].y][full1[A].x]=13;
-		if(wnum)
-			board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=full1[A];
-		break;
-	case 1:
-		board[half1.y][half1.x]=13;
-		if(wnum)	
-			board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
-		wchess[wnum++]=half1;
-		break;
-	default :break;
-	}
-}
-*/

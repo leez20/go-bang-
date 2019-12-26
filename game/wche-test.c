@@ -1,4 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include<time.h>
 #include"init.c"
 #include"wche-attack.c"
 
