@@ -21,7 +21,7 @@ struct chess black,bsuccess,bfull4[10],bhalf4[10],bfull3[10],bhalf3[10],bfull2[1
 
 
  int binfo(void){
- bful4=0,bhal4=0,bful3=0,bful2=0,bful1=0,bhal3=0,bhal2=0;//initialize
+ bful4=0;bhal4=0;bful3=0;bful2=0;bful1=0;bhal3=0;bhal2=0;//initialize
 
 
 int max=0;
@@ -102,9 +102,9 @@ for(i=x1;i<=x2;i++)
 
 		else if(Max(value[0],value[1],value[2],value[3])==8 )
 			{
-			int k,m=1;
-			for(k=0;k<4;k++)
-				if(value[k]==8)
+			int M,m=1;
+			for(M=0;M<4;M++)
+				if(value[M]==8)
 					m++;
 			if(m>1)
 				continue;
@@ -129,9 +129,9 @@ for(i=x1;i<=x2;i++)
 
 		else if(Max(value[0],value[1],value[2],value[3])==6)
 			{
-			int k,m=1;
-			for(k=0;k<4;k++)
-				if(value[k]==6)
+			int M,m=1;
+			for(M=0;M<4;M++)
+				if(value[M]==6)
 					m++;
 			if(m>1)
 				continue;
@@ -195,7 +195,7 @@ return max;
 
 
  int winfo(void){
- wful3=0,wful2=0,wful1=0; whal3=0,whal2=0;//initialize
+ wful4=0;whal4=0;wful3=0;wful2=0;wful1=0; whal3=0;whal2=0;//initialize
 
 int max=0;
 int x1=SIZE-1,y1=SIZE-1;//min rectangle
@@ -255,95 +255,88 @@ for(i=x1;i<=x2;i++)
 		value[1]=wayyjud(white);
 		value[2]=wauljud(white);
 		value[3]=waurjud(white);
-		if(Max(value[0],value[1],value[2],value[3])==9)
+switch(Max(value[0],value[1],value[2],value[3]))
 			{
+
+		case 9:
 			wsuccess=white;
 			max=9;
 			break;
-			}
-
-		else if(Max(value[0],value[1],value[2],value[3])==8 )
-			{
+			
+		case 8:
 			if(wful4<10)
 				wfull4[wful4++]=white;
 			else
 				wfull4[9]=white;	
 			max=(max>8?max:8);
 			break;
-			}
 
-		else if(Max(value[0],value[1],value[2],value[3])==7)
-			{
+		case 7:
 			if(whal4<10)
 				whalf4[whal4++]=white;
 			else
 				whalf4[9]=white;
 			max=(max>7?max:7);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==6)
-			{
+		case  6:
 			if(wful3<10)
 				wfull3[wful3++]=white;
 			else 
 				wfull3[9]=white;
 			max=(max>6?max:6);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==5)
-			{
+		case 5:
 			if(whal3<10)
 				whalf3[whal3++]=white;
 			else
 				whalf3[9]=white;
 			max=(max>5?max:5);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==4)
-			{
+		case 4:
 			if(wful2<10)
 				wfull2[wful2++]=white;
 			else
 				wfull2[9]=white;
 			max=(max>4?max:4);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==3)
-			{
+		case 3:
 			if(whal2<10)
 				whalf2[whal2++]=white;
 			else
 				whalf2[9]=white;
 			max=(max>3?max:3);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==2)
-			{
+		case 2:
 			if(wful1<10)
 				wfull1[wful1++]=white;
 			else
 				wfull1[9]=white;
 			max=(max>2?max:2);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==1)
-			{
+		case 1:
 			whalf1=white;
 			max=(max>1?max:1);
+			break;
 			}
 		}
-
 	}
 return max;
 }
 
 
 void battack(void){
-int random=rand()%11;// get random integer
+int random=rand()%97;// get random integer
 int max1,max2;
 max1=binfo();
 max2=winfo();
 int i,j;
+int signal=0;
 if(max1>=max2)
 {
 	switch(max1)
@@ -359,23 +352,25 @@ if(max1>=max2)
 	case 8:
 		for(i=0;i<bful4;i++)
 			for(j=0;j<wful4;j++)
-			if(bfull4[i].x==wfull4[j].x &&bfull4[i].y==wfull4[j].y)
+			if(bfull4[i].x==wfull4[j].x && bfull4[i].y==wfull4[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
-		random=random%bful4;
+		if(signal!=1)
+		  random=random%bful4;
 	break;
 	case 7:
 		for(i=0;i<bful4;i++)
 			for(j=0;j<whal4;j++)
 			if(bfull4[i].x==whalf4[j].x &&bfull4[i].y==whalf4[j].y )
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful4;
 	break;
 	case 6:
@@ -383,10 +378,11 @@ if(max1>=max2)
 			for(j=0;j<wful3;j++)
 			if(bfull4[1].x==wfull3[j].x &&bfull4[1].y==wfull3[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful4;
 	break;
 	case 5:
@@ -394,10 +390,11 @@ if(max1>=max2)
 			for(j=0;j<whal3;j++)
 			if(bfull4[i].x==whalf3[j].x &&bfull4[i].y==whalf3[j].y )
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful4;
 	break;
 	case 4:
@@ -405,10 +402,11 @@ if(max1>=max2)
 			for(j=0;j<wful2;j++)
 			if(bfull4[i].x==wfull2[j].x &&bfull4[i].y==wfull2[j].y )
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful4;
 	break;
 	case 3:
@@ -416,10 +414,11 @@ if(max1>=max2)
 			for(j=0;j<whal2;j++)
 			if(bfull4[i].x==whalf2[j].x &&bfull4[i].y==whalf2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful4;
 	break;
 	default:random=random%bful4;
@@ -437,10 +436,11 @@ if(max1>=max2)
 			for(j=0;j<whal4;j++)
 			if(bhalf4[i].x==whalf4[j].x && bhalf4[i].y==whalf4[j].y )
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal4;
 	break;
 	case 6:
@@ -448,10 +448,11 @@ if(max1>=max2)
 			for(j=0;j<wful3;j++)
 			if(bhalf4[i].x==wfull3[j].x && bhalf4[i].y==wfull3[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(!random!=i)
 		random=random%bhal4;
 	break;
 	case 5:
@@ -459,10 +460,11 @@ if(max1>=max2)
 			for(j=0;j<whal3;j++)
 			if(bhalf4[i].x==whalf3[j].x && bhalf4[i].y==whalf3[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal4;
 	break;
 	case 4:
@@ -470,10 +472,11 @@ if(max1>=max2)
 			for(j=0;j<wful2;j++)
 			if(bhalf4[i].x==wfull2[j].x && bhalf4[i].y==wfull2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal4;
 	break;
 	case 3:
@@ -481,10 +484,11 @@ if(max1>=max2)
 			for(j=0;j<whal2;j++)
 			if(bhalf4[i].x==whalf2[j].x && bhalf4[i].y==whalf2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal4;
 	break;
 	default:random=random%bhal4;
@@ -502,10 +506,11 @@ if(max1>=max2)
 			for(j=0;j<wful3;j++)
 			if(bfull3[i].x==wfull3[j].x && bfull3[i].y==wfull3[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful3;
 	break;
 	case 5:
@@ -513,10 +518,11 @@ if(max1>=max2)
 			for(j=0;j<whal3;j++)
 			if(bfull3[i].x==whalf3[j].x && bfull3[i].y==whalf3[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful3;
 	break;
 	case 4:
@@ -524,10 +530,11 @@ if(max1>=max2)
 			for(j=0;j<wful2;j++)
 			if(bfull3[i].y==wfull2[j].y && bfull3[i].x==wfull2[j].x)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful3;
 	break;
 	case 3:
@@ -535,10 +542,11 @@ if(max1>=max2)
 			for(j=0;j<whal2;j++)
 			if(bfull3[i].x==whalf2[j].x && bfull3[i].y==whalf2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful3;
 	break;
 	default:random=random%bful3;
@@ -557,10 +565,11 @@ if(max1>=max2)
 			for(j=0;j<whal3;j++)
 			if(bhalf3[i].x==whalf3[j].x && bhalf3[i].y==whalf3[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal3;
 	break;
 	case 4:
@@ -568,10 +577,11 @@ if(max1>=max2)
 			for(j=0;j<wful2;j++)
 			if(bhalf3[i].x==wfull2[j].x && bhalf3[i].y==wfull2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal3;
 	break;
 	case 3:
@@ -579,10 +589,11 @@ if(max1>=max2)
 			for(j=0;j<whal2;j++)
 			if(bhalf3[i].x==whalf2[j].x && bhalf3[i].y==whalf2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal3;
 	break;
 	default:random=random%bhal3;
@@ -600,10 +611,11 @@ if(max1>=max2)
 			for(j=0;j<wful2;j++)
 			if(bfull2[i].x==wfull2[j].x && bfull2[i].y==wfull2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful2;
 	break;
 	case 3:
@@ -611,10 +623,11 @@ if(max1>=max2)
 			for(j=0;j<whal2;j++)
 			if(bfull2[i].x==whalf2[j].x && bfull2[i].y==whalf2[j].y)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bful2;
 	break;
 	default:random=random%bful2;
@@ -632,10 +645,11 @@ if(max1>=max2)
 			for(j=0;j<whal2;j++)
 			if(bhalf2[i].x==whalf2[j].x && bhalf2[i].x==whalf2[j].x)
 				{
+				signal=1;
 				random=i;
 				break;
 				}
-		if(random!=i)
+		if(signal!=1)
 		random=random%bhal2;
 	break;
 	default:random=random%bhal2;
