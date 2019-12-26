@@ -1,5 +1,5 @@
-#include"bajud.c"
-#include"wajud.c"
+#include"bche-decide.c"
+#include"wche-decide.c"
 
 
 int Max(int x1,int x2,int x3,int x4)

@@ -1,8 +1,5 @@
-#include "wxx.c"
-#include "wyy.c"
-#include "wupleft.c"
-#include "wupright.c"
-#include "waxxjud.c"
+#include "wche-info.c"
+#include "wche-judge.c"
 
 int waxxjud(struct chess white);
 int wayyjud(struct chess white);

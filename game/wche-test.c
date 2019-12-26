@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include"init.c"
-#include"battack.c"
+#include"wche-attack.c"
 
 int main()
 {
+srand(time(NULL));//random function x
 int x=0;
 int i=0;
 	init_board();

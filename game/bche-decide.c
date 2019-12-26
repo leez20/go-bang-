@@ -1,8 +1,5 @@
-#include "bxx.c"
-#include "byy.c"
-#include "bupleft.c"
-#include "bupright.c"
-#include "baxxjud.c"
+#include "bche-info.c"
+#include "bche-judge.c"
  
 /*
 struct chess{

@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include"init.c"
-#include"battack.c"
+#include"bche-attack.c"
 
 int main()
 {
