@@ -7,6 +7,7 @@ int bajudxx2(struct chess black);//judge b????
 int bajudxx1(struct chess black){
 int x=black.x,y=black.y;
 int A,B,C,D;
+
 if(x==0)//b
 	{
 	A=0;
@@ -141,7 +142,7 @@ if(D<10)//o???b
 			if(A<10)
 				return 21;//obbob
 			else
-				return 22;//obbbb
+				return 22;//0bbbb
 			}
 		}
 	}
@@ -179,7 +180,7 @@ else//b???b
 			if(A<10)
 				return 29;//bbbob
 			else
-				return 30;//bbbbb
+					return 30;
 			}
 		}
 	}
@@ -190,8 +191,8 @@ else//b???b
 
 
 int bajudxx2(struct chess black){
-int x=black.x,y=black.y;
 int A,B,C,D;
+int x=black.x,y=black.y;
 if(x==14)
 	{
 	A=0;
@@ -362,7 +363,7 @@ else
 			if(D<10)
 				return 29;//bbbbo
 			else
-				return 30;//bbbbb
+					return 30;//obbbb
 			}
 		}
 	}

@@ -1,12 +1,5 @@
 #include "bche-info.c"
 #include "bche-judge.c"
- 
-/*
-struct chess{
-	int x;
-	int y;
-	};
-*/
 
 int baxxjud(struct chess black);
 int bayyjud(struct chess black);
