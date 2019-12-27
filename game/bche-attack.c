@@ -312,12 +312,12 @@ return max;
 
 
 void battack(void){
-int random=rand();// get random integer
-int max1,max2;
+int max1=0,max2=0;
 max1=binfo();
 max2=winfo();
 int i,j;
 int signal=0;
+int random=rand();// get random integer
 if(max1>=max2)
 {
 	switch(max1)

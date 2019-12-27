@@ -598,7 +598,7 @@ else
 	A=board[y+1][x];
 	B=board[y+2][x];
 	C=board[y+3][x];
-	D=board[y+3][x];
+	D=board[y+4][x];
 	}
 
 if(A==0 ||A>11)
@@ -779,8 +779,8 @@ else if(i==2)//?b
 	}
 else if(i==3)//??b
 	{
-	A=board[y0+1][x0-1];
-	B=board[y0-1][x0-2];
+	A=board[y0-1][x0-1];
+	B=board[y0-2][x0-2];
 	C=0;
 	D=0;
 	}

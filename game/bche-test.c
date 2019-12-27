@@ -6,6 +6,7 @@
 
 int main()
 {
+srand(time(NULL));//random function x
 int x=0;
 int i=0;
 	init_board();
