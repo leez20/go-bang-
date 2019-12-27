@@ -109,7 +109,7 @@ struct chess wchess[113];
 int bnum=0,wnum=0;
 
 */
-struct chess black;
+static struct chess black;
 
 void set_bchess(void){//enter black chess location
 int x=0;
@@ -139,7 +139,7 @@ if(0<=x && x<=SIZE && 'A'<=c && c<='O')
 }
 
 
-struct chess white;
+static struct chess white;
 
 void set_wchess(void){//enter white chess location
 int x=0;

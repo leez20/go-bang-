@@ -1,6 +1,7 @@
-
 int bajud(int x1,int x2){
-if(x1==0)
+switch(x1)
+{
+case 0:
 switch(x2)
 	{
 	case 0:return 0;
@@ -34,8 +35,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 7;
 	case 30:return 9;//success
+	break;
 	}
-else if(x1==1)
+case 1:
 switch(x2)
 	{
 	case 0:return 0;
@@ -69,8 +71,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1==2)
+case 2:
 switch(x2)
 	{
 	case 0:return 0;
@@ -104,8 +107,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 9;
 	case 30:return 0;
+	break;
 	}
-else if(x1==3)
+case 3:
 switch(x2)
 	{
 	case 0:return 0;
@@ -139,8 +143,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1==4)
+case 4:
 switch(x2)
 	{
 	case 0:return 0;
@@ -152,7 +157,7 @@ switch(x2)
 	case 6:return 7;
 	case 7:return 4;
 	case 8:return 4;
-	case 9:return 56;
+	case 9:return 6;
 	case 10:return 7;
 	case 11:return 6;
 	case 12:return 7;
@@ -174,8 +179,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 9;
 	case 30:return 0;
+	break;
 	}
-else if(x1==5)
+case 5:
 switch(x2)
 	{
 	case 0:return 0;
@@ -206,11 +212,12 @@ switch(x2)
 	case 25:return 6;
 	case 26:return 7;
 	case 27:return 7;
-	case 28:return 7;
+	case 28:return 8;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1==6)
+case 6:
 switch(x2)
 	{
 	case 0:return 0;
@@ -244,8 +251,9 @@ switch(x2)
 	case 28:return 9;
 	case 29:return 0;
 	case 30:return 0;
+	break;
 	}
-else if(x1==7)
+case 7:
 switch(x2)
 	{
 	case 0:return 0;
@@ -279,8 +287,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1==8)
+case 8:
 switch(x2)
 	{
 	case 0:return 0;
@@ -314,8 +323,9 @@ switch(x2)
 	case 28:return 8;
 	case 29:return 9;
 	case 30:return 0;
+	break;
 	}
-else if(x1==9)
+case 9:
 switch(x2)
 	{
 	case 0:return 0;
@@ -349,8 +359,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 7;
 	case 30:return 9;
+	break;
 	}
-else if(x1==10)
+case 10:
 switch(x2)
 	{
 	case 0:return 0;
@@ -364,8 +375,8 @@ switch(x2)
 	case 8:return 6;
 	case 9:return 7;
 	case 10:return 5;
-	case 11:return 7;
-	case 12:return 8;
+	case 11:return 8;
+	case 12:return 7;
 	case 13:return 9;
 	case 14:return 0;
 	case 15:return 6;
@@ -384,8 +395,9 @@ switch(x2)
 	case 28:return 9;
 	case 29:return 0;
 	case 30:return 0;
+	break;
 	}
-else if(x1==11)
+case 11:
 switch(x2)
 	{
 	case 0:return 0;
@@ -419,8 +431,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1==12)
+case 12:
 switch(x2)
 	{
 	case 0:return 0;
@@ -454,8 +467,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 9;
 	case 30:return 0;
+	break;
 	}
-else if(x1==13 )
+case 13:
 switch(x2)
 	{
 	case 0:return 0;
@@ -489,8 +503,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 14)
+case 14:
 switch(x2)
 	{
 	case 0:return 0;
@@ -524,8 +539,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 0;
 	case 30:return 0;
+	break;
 	}
-else if(x1== 15)
+case 15:
 switch(x2)
 	{
 	case 0:return 1;
@@ -559,8 +575,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 16)
+case 16:
 switch(x2)
 	{
 	case 0:return 3;
@@ -594,8 +611,9 @@ switch(x2)
 	case 28:return 8;
 	case 29:return 9;
 	case 30:return 0;
+	break;
 	}
-else if(x1== 17)
+case 17:
 switch(x2)
 	{
 	case 0:return 3;
@@ -629,8 +647,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 7;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 18)
+case 18:
 switch(x2)
 	{
 	case 0:return 5;
@@ -664,8 +683,9 @@ switch(x2)
 	case 28:return 9;
 	case 29:return 0;
 	case 30:return 0;
+	break;
 	}
-else if(x1==19)
+case 19:
 switch(x2)
 	{
 	case 0:return 1;
@@ -699,8 +719,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 20)
+case 20:
 switch(x2)
 	{
 	case 0:return 5;
@@ -734,8 +755,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 9;
 	case 30:return 0;
+	break;
 	}
-else if(x1== 21)
+case 21:
 switch(x2)
 	{
 	case 0:return 4;
@@ -769,8 +791,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 7;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 22)
+case 22:
 switch(x2)
 	{
 	case 0:return 7;
@@ -804,8 +827,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 0;
 	case 30:return 0;
+	break;
 	}
-else if(x1==23 )
+case 23:
 switch(x2)
 	{
 	case 0:return 1;
@@ -839,8 +863,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 24)
+case 24:
 switch(x2)
 	{
 	case 0:return 3;
@@ -874,8 +899,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 9;
 	case 30:return 9;
+	break;
 	}
-else if(x1==25 )
+case 25:
 switch(x2)
 	{
 	case 0:return 3;
@@ -909,8 +935,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 26)
+case 26:
 switch(x2)
 	{
 	case 0:return 7;
@@ -944,8 +971,9 @@ switch(x2)
 	case 28:return 9;
 	case 29:return 0;
 	case 30:return 0;
+	break;
 	}
-else if(x1==27 )
+case 27:
 switch(x2)
 	{
 	case 0:return 1;
@@ -979,8 +1007,9 @@ switch(x2)
 	case 28:return 7;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1== 28)
+case 28:
 switch(x2)
 	{
 	case 0:return 7;
@@ -1014,8 +1043,9 @@ switch(x2)
 	case 28:return 0;
 	case 29:return 9;
 	case 30:return 0;
+	break;
 	}
-else if(x1== 29)
+case 29:
 switch(x2)
 	{
 	case 0:return 7;
@@ -1049,7 +1079,9 @@ switch(x2)
 	case 28:return 8;
 	case 29:return 8;
 	case 30:return 9;
+	break;
 	}
-else if(x1==30)
-return 9;
+case 30:
+	return 9;
+}
 }

@@ -2,7 +2,7 @@
 #include"wche-decide.c"
 
 
-int Max(int x1,int x2,int x3,int x4)
+ int Max(int x1,int x2,int x3,int x4)
 {
 int y1,y2;
 y1= (x1>x2?x1:x2);
@@ -10,18 +10,18 @@ y2= (x3>x4?x3:x4);
 return y1>y2?y1:y2;
 }
 
-struct chess black,bsuccess,bfull4,bhalf4,bfull3[6],bhalf3[6],bfull2[10],bhalf2[10], bfull1[10],bhalf1;
-int bful3,bful2,bful1;//full
-int bhal3,bhal2;//half
+static struct chess black,bsuccess,bfull4[10],bhalf4[10],bfull3[10],bhalf3[10],bfull2[10],bhalf2[10], bfull1[10],bhalf1;
+static int bful4,bful3,bful2,bful1;//full
+static int bhal4,bhal3,bhal2;//half
 
-struct chess white,wsuccess,wfull4,whalf4,wfull3[6],whalf3[6],wfull2[10],whalf2[10], wfull1[10],whalf1;
-int wful3,wful2,wful1;//full
-int whal3,whal2;//half
+static struct chess white,wsuccess,wfull4[10],whalf4[10],wfull3[10],whalf3[10],wfull2[10],whalf2[10], wfull1[10],whalf1;
+static int wful4, wful3,wful2,wful1;//full
+static int whal4,whal3,whal2;//half
 
 
 
-int binfo(void){
- bful3=0,bful2=0,bful1=0,bhal3=0,bhal2=0;//initialize
+static  int binfo(void){
+ bful4=0;bhal4=0;bful3=0;bful2=0;bful1=0;bhal3=0;bhal2=0;//initialize
 
 
 int max=0;
@@ -57,15 +57,6 @@ y1=(y1==0?0:y1-1);
 x2=(x2==14?14:x2+1);
 y2=(y2==14?14:y2+1);
 
-if(x1==0)
-x2=(x2<3?x2+3:x2);
-if(x2==14)
-x1=(x1>11?x1-3:x1);
-if(y1==0)
-y2=(y2<3?y2+3:y2);
-if(y2==14)
-y1=(y1>11?y1-3:y1);
-
 if(x1>=x2)
 {
 x1=0;
@@ -80,7 +71,7 @@ y2=SIZE-1;
 int value[4]={0};
 int i,j;
 int blank=0;
-
+int M,m=0;
 for(i=x1;i<=x2;i++)
 	for(j=y1;j<=y2;j++)
 	{
@@ -93,86 +84,108 @@ for(i=x1;i<=x2;i++)
 		value[1]=bayyjud(black);
 		value[2]=bauljud(black);
 		value[3]=baurjud(black);
-		if(Max(value[0],value[1],value[2],value[3])==9)
-			{
+
+		switch(Max(value[0],value[1],value[2],value[3]))
+		{
+		case 9:
 			bsuccess=black;
 			max=9;
 			break;
-			}
-
-		else if(Max(value[0],value[1],value[2],value[3])==8 )
-			{
-			bfull4=black;
-			max=(max>8?max:8);
+		break;
+		case 8:
+			for(M=0;M<4;M++)
+				{
+					m=0;
+				if(value[M]==8)
+					m++;
+				}
+			if(m>1)
+				continue;
+			else
+				{
+				if(bful4<10)
+					bfull4[bful4++]=black;
+				else
+					bfull4[9]=black;
+				max=(max>8?max:8);
+				}
 			break;
-			}
 
-		else if(Max(value[0],value[1],value[2],value[3])==7)
-			{
-			bhalf4=black;
+		case 7:
+			if(bhal4<10)
+				bhalf4[bhal4++]=black;
+			else
+				bhalf4[9]=black;
 			max=(max>7?max:7);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==6)
-			{
-			if(bful3<6)
-				bfull3[bful3++]=black;
-			else 
-				bfull3[5]=black;
-			max=(max>6?max:6);
-			}
+		case 6:
+			for(M=0;M<4;M++)
+				{
+					m=0;
+				if(value[M]==6)
+					m++;
+				}
+			if(m>1)
+				continue;
+			else
+				{
+				if(bful3<10)
+					bfull3[bful3++]=black;
+				else 
+					bfull3[9]=black;
+				max=(max>6?max:6);
+				}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==5)
-			{
-			if(bhal3<6)
+		case 5:
+			if(bhal3<10)
 				bhalf3[bhal3++]=black;
 			else
-				bhalf3[5]=black;
+				bhalf3[9]=black;
 			max=(max>5?max:5);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==4)
-			{
+		case 4:
 			if(bful2<10)
 				bfull2[bful2++]=black;
 			else
 				bfull2[9]=black;
 			max=(max>4?max:4);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==3)
-			{
+		case 3:
 			if(bhal2<10)
 				bhalf2[bhal2++]=black;
 			else
 				bhalf2[9]=black;
 			max=(max>3?max:3);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==2)
-			{
+		case 2:
 			if(bful1<10)
 				bfull1[bful1++]=black;
 			else
 				bfull1[9]=black;
 			max=(max>2?max:2);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==1)
-			{
+		case 1:
 			bhalf1=black;
 			max=(max>1?max:1);
-			}
-		else max=0;
+			break;
+		case 0: max=0;
+			break;
+		default :break;
 		}
-
+		}
 	}
 return max;
 }
 
 
-int winfo(void){
- wful3=0,wful2=0,wful1=0; whal3=0,whal2=0;//initialize
+static  int winfo(void){
+ wful4=0;whal4=0;wful3=0;wful2=0;wful1=0; whal3=0;whal2=0;//initialize
 
 int max=0;
 int x1=SIZE-1,y1=SIZE-1;//min rectangle
@@ -204,17 +217,8 @@ for(k=0;k<wnum;k++)
 
 x1=(x1==0?0:x1-1);
 y1=(y1==0?0:y1-1);
-x2=(x2==14?14:y2+1);
+x2=(x2==14?14:x2+1);
 y2=(y2==14?14:y2+1);
-
-if(x1==0)
-x2=(x2<3?x2+3:x2);
-if(x2==14)
-x1=(x1>11?x1-3:x1);
-if(y1==0)
-y2=(y2<3?y2+3:y2);
-if(y2==14)
-y1=(y1>11?y1-3:y1);
 
 int value[4]={0};
 int i,j;
@@ -232,90 +236,90 @@ for(i=x1;i<=x2;i++)
 		value[1]=wayyjud(white);
 		value[2]=wauljud(white);
 		value[3]=waurjud(white);
-		if(Max(value[0],value[1],value[2],value[3])==9)
+switch(Max(value[0],value[1],value[2],value[3]))
 			{
+
+		case 9:
 			wsuccess=white;
 			max=9;
 			break;
-			}
-
-		else if(Max(value[0],value[1],value[2],value[3])==8 )
-			{
-			wfull4=white;
+			
+		case 8:
+			if(wful4<10)
+				wfull4[wful4++]=white;
+			else
+				wfull4[9]=white;	
 			max=(max>8?max:8);
 			break;
-			}
 
-		else if(Max(value[0],value[1],value[2],value[3])==7)
-			{
-			whalf4=white;
+		case 7:
+			if(whal4<10)
+				whalf4[whal4++]=white;
+			else
+				whalf4[9]=white;
 			max=(max>7?max:7);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==6)
-			{
-			if(wful3<6)
+		case  6:
+			if(wful3<10)
 				wfull3[wful3++]=white;
 			else 
-				wfull3[5]=white;
+				wfull3[9]=white;
 			max=(max>6?max:6);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==5)
-			{
-			if(whal3<6)
+		case 5:
+			if(whal3<10)
 				whalf3[whal3++]=white;
 			else
-				whalf3[5]=white;
+				whalf3[9]=white;
 			max=(max>5?max:5);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==4)
-			{
+		case 4:
 			if(wful2<10)
 				wfull2[wful2++]=white;
 			else
 				wfull2[9]=white;
 			max=(max>4?max:4);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==3)
-			{
+		case 3:
 			if(whal2<10)
 				whalf2[whal2++]=white;
 			else
 				whalf2[9]=white;
 			max=(max>3?max:3);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==2)
-			{
+		case 2:
 			if(wful1<10)
 				wfull1[wful1++]=white;
 			else
 				wfull1[9]=white;
 			max=(max>2?max:2);
-			}
+			break;
 
-		else if(Max(value[0],value[1],value[2],value[3])==1)
-			{
+		case 1:
 			whalf1=white;
 			max=(max>1?max:1);
+			break;
 			}
 		}
-
 	}
 return max;
 }
 
 
 void battack(void){
-int random=rand()%11;// get random integer
+int random=rand();// get random integer
 int max1,max2;
 max1=binfo();
 max2=winfo();
-
+int i,j;
+int signal=0;
 if(max1>=max2)
+{
 	switch(max1)
 	{
 	case 9:
@@ -324,14 +328,32 @@ if(max1>=max2)
 		bchess[bnum++]=bsuccess;
 		break;
 	case 8:
-		board[bfull4.y][bfull4.x]=11;
+		switch (max2)
+		{
+			case 8:
+				for(i=0;i<bful4;i++)
+					for(j=0;j<wful4;j++)
+					if(bfull4[i].x==wfull4[j].x && bfull4[i].y==wfull4[j].y)
+						{
+						signal=1;
+						random=i;
+						break;
+						}
+				if(signal!=1)
+				  random=random%bful4;
+			break;
+			default:random=random%bful4;
+			break;
+		}		
+		board[bfull4[random].y][bfull4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=bfull4;
+		bchess[bnum++]=bfull4[random];
 		break;
 	case 7:
-		board[bhalf4.y][bhalf4.x]=11;
+		random=random%bhal4;
+		board[bhalf4[random].y][bhalf4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=bhalf4;
+		bchess[bnum++]=bhalf4[random];
 		break;
 	case 6:
 		random=random%bful3;
@@ -372,6 +394,7 @@ if(max1>=max2)
 		break;
 	default :break;
 	}
+}
 else
 switch(max2)
 	{
@@ -381,14 +404,16 @@ switch(max2)
 		bchess[bnum++]=wsuccess;
 		break;
 	case 8:
-		board[wfull4.y][wfull4.x]=11;
+		random=random%wful4;
+		board[wfull4[random].y][wfull4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=wfull4;
+		bchess[bnum++]=wfull4[random];
 		break;
 	case 7:
-		board[whalf4.y][whalf4.x]=11;
+		random=random%whal4;
+		board[whalf4[random].y][whalf4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
-		bchess[bnum++]=whalf4;
+		bchess[bnum++]=whalf4[random];
 		break;
 	case 6:
 		random=random%wful3;
@@ -431,6 +456,4 @@ switch(max2)
 		break;
 	default :break;
 	}
-
 }
-
