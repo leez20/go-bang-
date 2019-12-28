@@ -1,8 +1,6 @@
-//xx judge
-
+//white xx line single side judge
 int wajudxx1(struct chess white);//judge ????b
 int wajudxx2(struct chess white);//judge b????
-
 
 int wajudxx1(struct chess white){
 int x=white.x,y=white.y;
@@ -187,8 +185,6 @@ else//b???b
   }
 }
 
-
-
 int wajudxx2(struct chess white){
 int x=white.x,y=white.y;
 int A,B,C,D;
@@ -369,11 +365,10 @@ else
   }
 }
 
-//wyyjudge
+//white yy line single side judge
 
 int ajudyy1(struct chess white);//judge ????b
 int wajudyy2(struct chess white);//judge b????
-
 
 int wajudyy1(struct chess white){
 int x=white.x,y=white.y;
@@ -558,8 +553,6 @@ else//b???b
   }
 }
 
-
-
 int wajudyy2(struct chess white){
 int x=white.x,y=white.y;
 int A,B,C,D;
@@ -740,7 +733,7 @@ else
   }
 }
 
-//wul judge
+//white up left line single side judge
 
 int wajudul1(struct chess white);//judge ????b
 int wajudul2(struct chess white);//judge b????
@@ -940,8 +933,6 @@ else//b???b
   }
 }
 
-
-
 int wajudul2(struct chess white){
 int x0=white.x,y0=white.y;
 int A,B,C,D;
@@ -1133,7 +1124,7 @@ else
   }
 }
 
-//wur judge
+//white up right line single side judge
 
 int wajudur1(struct chess white);//judge ????b
 int wajudur2(struct chess white);//judge b????
