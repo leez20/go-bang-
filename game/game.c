@@ -27,7 +27,8 @@ int main()
 srand(time(NULL));//random function x, to use rand() in func b/wattack
 int bwin=0,wwin=0,side=-1,pattern=-1;
 int i=0;
-
+int bvalid=0,wvalid=0;
+char X;//diminish '\n'
 char A[20]="\0";//A name
 char B[20]="\0";//B name
 
@@ -39,6 +40,7 @@ while(pattern!=0 && pattern!=1 && pattern!=2)
 	{
 	printf("\n----------------------------------------\n0.Give up playing!\n1.Play with friends\n2.Play with computer\n----------------------------------------\n");
 	scanf("%d",&pattern);
+	X=getchar();//diminish '\n'
 if(pattern!=0 && pattern!=1 && pattern!=2)
 	 printf("\nInput wrong number,try again or enter 0 to quit game!\n") ;
 	}
@@ -46,7 +48,6 @@ if(pattern!=0 && pattern!=1 && pattern!=2)
 if(pattern==1)
 {
 int j;char c;
-c=getchar();
 printf("\n----------------------------------------\nPlease enter your name:");
 for (j=0;j<20 && (c=getchar())!='\n';j++)
 	A[j]=c;
@@ -59,6 +60,7 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 		{
 		printf("\n----------------------------------------\n0.Give up playing\n1.Black chess(White chess for %s)\n2.White chess(Black chess for %s)\n----------------------------------------\n",B,B);
 		scanf("%d",&side);
+		X=getchar();//diminish '\n'
 	if(side!=0 && side!=1 &&side!=2)
 		 printf("\nInput wrong number,try again or enter 0 to quit game!\n") ;
 		}
@@ -67,8 +69,8 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 
 		for(i=0;i<SIZE*SIZE+1;i++)
 		{
-		if(bnum>0)
-			bwin=bjudge(bchess[bnum-1]);
+		bvalid=0;
+		wvalid=0;
 		if(wnum>0)
 			wwin=wjudge(wchess[wnum-1]);
 
@@ -79,10 +81,17 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 			}
 	if(wnum>0)
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",B,wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
-		set_bchess();
+		bvalid=set_bchess(A);
+		if(bvalid)
 		display_board();
-
-	if(bwin==1)
+	else 
+		{
+		printf("\n%s give up the game!\n",A);		
+		break;
+		}
+	if(bnum>0)
+			bwin=bjudge(bchess[bnum-1]);
+		if(bwin==1)
 			{
 			printf("\n----------------------------------------\n%s set chess at: %c%d. %s win the game!\n----------------------------------------\n\n",A,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y,B);
 			break;
@@ -96,8 +105,14 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 
 	if(bnum>0)
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",A,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
-		set_wchess();
+		wvalid=set_wchess(B);
+		if(wvalid)
 		display_board();
+	else 
+		{
+		printf("\n%s give up the game!\n",B);		
+		break;
+		}
 		}
 
 	}
@@ -106,8 +121,8 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 	{
 	for(i=0;i<SIZE*SIZE+1;i++)
 		{
-		if(bnum>0)		
-			bwin=bjudge(bchess[bnum-1]);
+		bvalid=0;
+		wvalid=0;
 		if(wnum>0)
 			wwin=wjudge(wchess[wnum-1]);
 
@@ -118,9 +133,16 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 			}
 	if(wnum>0)
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n",A,wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
-		set_bchess();
+		bvalid=set_bchess(B);
+		if(bvalid)
 		display_board();
-
+	else 
+		{
+		printf("\n%s give up the game!\n",B);		
+		break;
+		}
+	if(bnum>0)		
+		bwin=bjudge(bchess[bnum-1]);
 		if(bwin==1)
 			{
 			printf("\n----------------------------------------\n%s set chess at: %c%d. %s win the game!\n----------------------------------------\n\n",B,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y,B);
@@ -135,8 +157,14 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 	
 	if(bnum>0)
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",B,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
-		set_wchess();
+		wvalid=set_wchess(A);
+		if(wvalid)
 		display_board();
+	else 
+		{
+		printf("\n%s give up the game!\n",A);		
+		break;
+		}
 		}
 
 	}
@@ -146,11 +174,16 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 
 else if(pattern==2)
 {
-	printf("\n----------------------------------------\nWhich side do you want to choose?\n");
+int j;char c;
+printf("\n----------------------------------------\nPlease enter your name:");
+for (j=0;j<20 && (c=getchar())!='\n';j++)
+	A[j]=c;
+	printf("\n----------------------------------------\n%s,Which side do you want to choose?\n",A);
 	while(side!=0 && side!=1 &&side!=2)
 		{
 		printf("\n-----------------------------------------\n0.Give up playing\n1.White chess(Black chess for computer)\n2.Black chess(White chess for computer)\n-----------------------------------------\n");
 		scanf("%d",&side);
+		X=getchar();//diminish '\n'
 	if(side!=0 && side!=1 &&side!=2)
 		 printf("Input wrong number,try again or enter 0 to quit game!\n") ;
 		}
@@ -165,6 +198,7 @@ else if(pattern==2)
 
 		for(i=1;i<SIZE*SIZE+1;i++)
 		{
+		wvalid=0;
 			bwin=bjudge(bchess[bnum-1]);
 		if(wnum>0)
 			wwin=wjudge(wchess[wnum-1]);
@@ -186,8 +220,14 @@ else if(pattern==2)
 			break;
 			}
 		printf("\n----------------------------------------\nBlack-chess side set chess at: %c%d.\n----------------------------------------\n",bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
-		set_wchess();
+		wvalid=set_wchess(A);
+		if(wvalid)
 		display_board();
+	else 
+		{
+		printf("\n%s give up the game!\n",A);		
+		break;
+		}
 		battack();
 		display_board();
 		}
@@ -198,6 +238,7 @@ else if(pattern==2)
 	{
 	for(i=0;i<SIZE*SIZE+1;i++)
 		{
+		bvalid=0;
 		if(bnum>0)		
 			bwin=bjudge(bchess[bnum-1]);
 		if(wnum>0)
@@ -221,8 +262,14 @@ else if(pattern==2)
 			}
 		if(wnum>0)
 			printf("\n----------------------------------------\nWhite-chess side set chess at: %c%d.\n----------------------------------------\n",wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
-		set_bchess();
+		bvalid=set_bchess(A);
+		if(bvalid)
 		display_board();
+	else 
+		{
+		printf("\n%s give up the game!\n",A);		
+		break;
+		}
 		wattack();
 		display_board();
 		}

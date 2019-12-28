@@ -108,13 +108,17 @@ int bnum=0,wnum=0;
 */
 static struct chess black;
 
-void set_bchess(void){//enter black chess location
+int set_bchess(char s[]){//enter black chess location
 int x=0;
 int x1=0,y1=0;
 char c='A';
-
-printf("\n(Black) Please enter your set \"number,alpha\" : ");
-scanf("%d,%c",&x,&c);
+char X;//diminish '\n'
+int valid=1;
+while(valid==1)
+{
+printf("\n%s, please enter your set \"alpha number(example: H 8)\" : ",s);
+scanf("%c %d",&c,&x);
+X=getchar();//diminish '\n'
 if(0<=x && x<=SIZE && 'A'<=c && c<='O')
 	{
 	black.x=c-'A';
@@ -123,7 +127,7 @@ if(0<=x && x<=SIZE && 'A'<=c && c<='O')
 		{
 	x1=bchess[bnum-1].x;
 	y1=bchess[bnum-1].y;
-	board[y1][x1]=10;
+	board[y1][x1]=10;		
 		}
 	x1=black.x;
 	y1=black.y;
@@ -131,20 +135,36 @@ if(0<=x && x<=SIZE && 'A'<=c && c<='O')
 	bchess[bnum].x=x1;
 	bchess[bnum].y=y1;
 	bnum++;
+	valid=1;
+	return 1;
 	}
-//else wrong set
+
+else
+	{
+	printf("\n Invalid input. Input 1 to try again or input any other number to quit:");
+	scanf("%d",&valid);
+	X=getchar();//diminish '\n'
+	}
+}
+if(valid!=1)
+return 0;
 }
 
 
 static struct chess white;
 
-void set_wchess(void){//enter white chess location
+int set_wchess(char s[]){//enter white chess location
 int x=0;
 int x1=0,y1=0;
 char c='A';
+int valid=1;
+char X;//diminish '\n'
 
-printf("\n(White) Please enter your set \"number,alpha\" : ");
-scanf("%d,%c",&x,&c);
+while(valid==1)
+{
+printf("\n%s, please enter your set \"alpha number(example: H 8)\" : ",s);
+scanf("%c %d",&c,&x);
+X=getchar();//diminish '\n'
 if(0<=x && x<=SIZE && 'A'<=c && c<='O')
 	{
 	white.x=c-'A';
@@ -161,9 +181,21 @@ if(0<=x && x<=SIZE && 'A'<=c && c<='O')
 	wchess[wnum].x=x1;
 	wchess[wnum].y=y1;
 	wnum++;
+	valid=0;
+	return 1;
 	}
-//  elsewrong set
+
+else
+	{
+	printf("\n Invalid input. Input 1 to try again or input any other number to quit:");
+	scanf("%d",&valid);
+	X=getchar();//diminish '\n'
+	}
 }
+if(valid!=1)
+return 0;
+}
+
 
 int Max(int x1,int x2,int x3,int x4)//return max(x1,x2,x3,x4)
 {
