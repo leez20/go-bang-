@@ -1,4 +1,3 @@
-#include "init.h"
 //black chess info
 //black xx line single side judge
 int bajudxx1(struct chess black){

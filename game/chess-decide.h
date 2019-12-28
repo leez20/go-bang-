@@ -1,6 +1,3 @@
-#include "chess-info.h"
-#include "chess-judge.h"
-
 int baxxjud(struct chess black);//judge black chess xx line
 int bayyjud(struct chess black);//judge black chess yy line
 int bauljud(struct chess black);//judge black chess up left line

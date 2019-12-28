@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>//random func
-#include<time.h>//random func
-#include"init.h"
-#include"bche-attack.h"//func battack
-#include"wche-attack.h"//func wattack
+#include <time.h>//random func
+#include "chess-init.h"//initailize gobang board
+#include "chess-info.h"//enumeration tab
+#include "chess-judge.h"//return line two side info
+#include "chess-decide.h"//decide which chess pattern the location belong to
+#include "chess-attack.h"//chess attack func battack,wattack
+
 
 /* in init.c:
-1.func init_board display_board set_bchess set_wchess;
+1.func init_board,display_board, set_bchess, set_wchess,Max;
 2.array board[SIZE][SIZE]; 
 3.struct chess{
 	int x;
@@ -17,36 +20,224 @@
 
 int bjudge(struct chess black);//judge wether black chess win or lose(forbid)
 int wjudge(struct chess white);//judge wether white chess win or not
-int Max(int x1,int x2,int x3,int x4);//return max(x1,x2,x3,x4)
+
 
 int main()
 {
 srand(time(NULL));//random function x, to use rand() in func b/wattack
+int bwin=0,wwin=0,side=-1,pattern=-1;
 int i=0;
+
+char A[20]="\0";//A name
+char B[20]="\0";//B name
+
+
 	init_board();//initailize gobgang board
-board[7][7]=11;
-bnum=0;
-bchess[bnum].x=7;
-bchess[bnum++].y=7;
 	display_board();
-for(i=0;i<51;i++)
+printf("\n------------------------------------------------------------------\nWelcome to play gobang game! Which pattern do you want to choose?\n\n");
+while(pattern!=0 && pattern!=1 && pattern!=2)
+	{
+	printf("\n----------------------------------------\n0.Give up playing!\n1.Play with friends\n2.Play with computer\n----------------------------------------\n");
+	scanf("%d",&pattern);
+if(pattern!=0 && pattern!=1 && pattern!=2)
+	 printf("\nInput wrong number,try again or enter 0 to quit game!\n") ;
+	}
+
+if(pattern==1)
 {
-set_wchess();
-display_board();
-battack();
-display_board();
+int j;char c;
+c=getchar();
+printf("\n----------------------------------------\nPlease enter your name:");
+for (j=0;j<20 && (c=getchar())!='\n';j++)
+	A[j]=c;
+printf("\n----------------------------------------\nPlease enter your friend's name:");
+for (j=0;j<20 && (c=getchar())!='\n';j++)
+	B[j]=c;
+
+printf("\n\n\n----------------------------------------\nWhich side does %s want to choose?\n\n",A);
+	while(side!=0 && side!=1 &&side!=2)
+		{
+		printf("\n----------------------------------------\n0.Give up playing\n1.Black chess(White chess for %s)\n2.White chess(Black chess for %s)\n----------------------------------------\n",B,B);
+		scanf("%d",&side);
+	if(side!=0 && side!=1 &&side!=2)
+		 printf("\nInput wrong number,try again or enter 0 to quit game!\n") ;
+		}
+	if(side==1)
+	{
+
+		for(i=0;i<SIZE*SIZE+1;i++)
+		{
+		if(bnum>0)
+			bwin=bjudge(bchess[bnum-1]);
+		if(wnum>0)
+			wwin=wjudge(wchess[wnum-1]);
+
+		 if(wwin==1)
+			{
+			printf("\n----------------------------------------\n%s set chess at: %c%d. %s win the game!\n----------------------------------------\n\n",B,wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y,B);
+			break;
+			}
+	if(wnum>0)
+		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",B,wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
+		set_bchess();
+		display_board();
+
+	if(bwin==1)
+			{
+			printf("\n----------------------------------------\n%s set chess at: %c%d. %s win the game!\n----------------------------------------\n\n",A,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y,B);
+			break;
+			}
+
+		else if(bwin==-1)
+			{
+			printf("\n----------------------------------------\n%s set chess at forbidden location: %c%d. %s win the game!\n----------------------------------------\n\n",B,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y,A);
+			break;
+			}
+
+	if(bnum>0)
+		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",A,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
+		set_wchess();
+		display_board();
+		}
+
+	}
+
+	else if(side==2)
+	{
+	for(i=0;i<SIZE*SIZE+1;i++)
+		{
+		if(bnum>0)		
+			bwin=bjudge(bchess[bnum-1]);
+		if(wnum>0)
+			wwin=wjudge(wchess[wnum-1]);
+
+		if(wwin==1)
+			{
+			printf("\n----------------------------------------\n%s set chess at: %c%d. %s win the game!\n----------------------------------------\n\n",A,wchess[bnum-1].x+'A',SIZE-wchess[bnum-1].y,A);
+			break;
+			}
+	if(wnum>0)
+		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n",A,wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
+		set_bchess();
+		display_board();
+
+		if(bwin==1)
+			{
+			printf("\n----------------------------------------\n%s set chess at: %c%d. %s win the game!\n----------------------------------------\n\n",B,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y,B);
+			break;
+			}
+
+		else if(bwin==-1)
+			{
+			printf("\n----------------------------------------\n%s set chess at forbidden location: %c%d. %s win the game!\n----------------------------------------\n\n",B,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y,A);
+			break;
+			}	
+	
+	if(bnum>0)
+		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",B,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
+		set_wchess();
+		display_board();
+		}
+
+	}
+
+
 }
+
+else if(pattern==2)
+{
+	printf("\n----------------------------------------\nWhich side do you want to choose?\n");
+	while(side!=0 && side!=1 &&side!=2)
+		{
+		printf("\n-----------------------------------------\n0.Give up playing\n1.White chess(Black chess for computer)\n2.Black chess(White chess for computer)\n-----------------------------------------\n");
+		scanf("%d",&side);
+	if(side!=0 && side!=1 &&side!=2)
+		 printf("Input wrong number,try again or enter 0 to quit game!\n") ;
+		}
+
+	if(side==1)
+	{
+		board[7][7]=11;
+		bnum=0;
+		bchess[bnum].x=7;
+		bchess[bnum++].y=7;
+		display_board();
+
+		for(i=1;i<SIZE*SIZE+1;i++)
+		{
+			bwin=bjudge(bchess[bnum-1]);
+		if(wnum>0)
+			wwin=wjudge(wchess[wnum-1]);
+
+		if(bwin==1)
+			{
+			printf("\n----------------------------------------\nBlack-chess side set chess at: %c%d. Black-chess side win the game!\n----------------------------------------\n\n",bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
+			break;
+			}
+
+		else if(bwin==-1)
+			{
+			printf("\n----------------------------------------\nBlack-chess side set chess at forbidden location: %c%d. White-chess side win the game!\n----------------------------------------\n\n",bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
+			break;
+			}
+		else if(wwin==1)
+			{
+			printf("\n----------------------------------------\nWhite-chess side set chess at: %c%d. White-chess side win the game!\n----------------------------------------\n\n",wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
+			break;
+			}
+		printf("\n----------------------------------------\nBlack-chess side set chess at: %c%d.\n----------------------------------------\n",bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
+		set_wchess();
+		display_board();
+		battack();
+		display_board();
+		}
+
+	}
+
+	else if(side==2)
+	{
+	for(i=0;i<SIZE*SIZE+1;i++)
+		{
+		if(bnum>0)		
+			bwin=bjudge(bchess[bnum-1]);
+		if(wnum>0)
+			wwin=wjudge(wchess[wnum-1]);
+
+		if(bwin==1)
+			{
+			printf("\n----------------------------------------\nBlack-chess side set chess at: %c%d. Black-chess side win the game!\n----------------------------------------\n\n",bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
+			break;
+			}
+
+		else if(bwin==-1)
+			{
+			printf("\n----------------------------------------\nBlack-chess side set chess at forbidden location: %c%d. White-chess side win the game!\n----------------------------------------\n\n",bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
+			break;
+			}
+		else if(wwin==1)
+			{
+			printf("\n----------------------------------------\nWhite-chess side set chess at: %c%d. White-chess side win the game!\n----------------------------------------\n\n",wchess[bnum-1].x+'A',SIZE-wchess[bnum-1].y);
+			break;
+			}
+		if(wnum>0)
+			printf("\n----------------------------------------\nWhite-chess side set chess at: %c%d.\n----------------------------------------\n",wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
+		set_bchess();
+		display_board();
+		wattack();
+		display_board();
+		}
+
+	}
+}
+if (i==SIZE*SIZE+1)
+	printf("\nNo one win,no one lose!\n\n");
+
+printf("Enter 0 to quit game!");
+scanf("%d",&i); 
 return 0;	
 }
 
 
-int Max(int x1,int x2,int x3,int x4)
-{
-int y1,y2;
-y1= (x1>x2?x1:x2);
-y2= (x3>x4?x3:x4);
-return y1>y2?y1:y2;
-}
 
 int bjudge(struct chess black)
 {
@@ -107,7 +298,7 @@ int M,m=0;
 				else
 					return 0;
 			default: return 0;
-		}
+			}
 }
 
 int wjudge(struct chess white)
@@ -135,6 +326,6 @@ int M,m=0;
 				if(m>1)
 					return 1;
 			default: return 0;
-		}
+			}
 }
 

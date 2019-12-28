@@ -1,6 +1,3 @@
-#include<stdio.h>
-#include<stdlib.h>//system clear
-
 //┏ ┓┗ ┛┳ ┻ ╋ ┫┣ ● ○ ▼ △ ▲
 
 
@@ -168,8 +165,13 @@ if(0<=x && x<=SIZE && 'A'<=c && c<='O')
 //  elsewrong set
 }
 
-
-
+int Max(int x1,int x2,int x3,int x4)//return max(x1,x2,x3,x4)
+{
+int y1,y2;
+y1= (x1>x2?x1:x2);
+y2= (x3>x4?x3:x4);
+return y1>y2?y1:y2;
+}
 
 
 
