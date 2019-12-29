@@ -976,7 +976,7 @@ int b=y0-x0,Y,X;
 int i; ////func y=x+b  b=y0-x0
 for(i=1;i<6;i++)
 {
-X=y0+i;
+X=x0+i;
 Y=X+b;
 if(Y>SIZE-1 || X>SIZE-1)
 	break;
@@ -2513,7 +2513,7 @@ int b=y0-x0,Y,X;
 int i; ////func y=x+b  b=y0-x0
 for(i=1;i<5;i++)
 {
-X=y0+i;
+X=x0+i;
 Y=X+b;
 if(Y>SIZE-1 || X>SIZE-1)
 	break;

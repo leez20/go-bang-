@@ -119,7 +119,17 @@ while(valid==1)
 printf("\n%s, please enter your set \"alpha number(example: H 8)\" : ",s);
 scanf("%c %d",&c,&x);
 X=getchar();//diminish '\n'
-if(0<=x && x<=SIZE && 'A'<=c && c<='O')
+int i,j=0;
+int x2,y2;
+x2=c-'A';
+y2=SIZE-x;
+for(i=0;i<bnum;i++)
+if(bchess[i].x==x2 && bchess[i].y==y2)
+j=1;
+for(i=0;i<wnum;i++)
+if(wchess[i].x==x2 && wchess[i].y==y2)
+j=1;
+if(0<=x && x<=SIZE && 'A'<=c && c<='O' &&j==0)
 	{
 	black.x=c-'A';
 	black.y=SIZE-x;
@@ -165,7 +175,18 @@ while(valid==1)
 printf("\n%s, please enter your set \"alpha number(example: H 8)\" : ",s);
 scanf("%c %d",&c,&x);
 X=getchar();//diminish '\n'
-if(0<=x && x<=SIZE && 'A'<=c && c<='O')
+int i,j=0;
+int x2,y2;
+x2=c-'A';
+y2=SIZE-x;
+for(i=0;i<bnum;i++)
+if(bchess[i].x==x2 && bchess[i].y==y2)
+j=1;
+for(i=0;i<wnum;i++)
+if(wchess[i].x==x2 && wchess[i].y==y2)
+j=1;
+
+if(0<=x && x<=SIZE && 'A'<=c && c<='O' && j==0)
 	{
 	white.x=c-'A';
 	white.y=SIZE-x;
