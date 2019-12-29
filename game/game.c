@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>//random func
 #include <time.h>//random func
-#include "chess-init.h"//initailize gobang board
-#include "chess-info.h"//enumeration tab
-#include "chess-judge.h"//return line two side info
-#include "chess-decide.h"//decide which chess pattern the location belong to
-#include "chess-attack.h"//chess attack func battack,wattack
+#include "chess-init.c"//initailize gobang board
+#include "chess-info.c"//enumeration tab
+#include "chess-judge.c"//return line two side info
+#include "chess-decide.c"//decide which chess pattern the location belong to
+#include "chess-attack.c"//chess attack func battack,wattack
 
 /* in init.c:
 1.func init_board,display_board, set_bchess, set_wchess,Max;

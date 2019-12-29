@@ -167,7 +167,7 @@ for(i=x1;i<=x2;i++)
 	}
 return max;
 }
-
+//
 static int winfo(void){
  wful4=0,whal4=0;wful3=0;wful2=0;wful1=0; whal3=0;whal2=0;//initialize
 int max=0;
@@ -215,10 +215,10 @@ for(i=x1;i<=x2;i++)
 		{
 		white.x=i;
 		white.y=j;
-		value[0]=waxxjud(white);
-		value[1]=wayyjud(white);
-		value[2]=wauljud(white);
-		value[3]=waurjud(white);
+		value[0]=dwaxxjud(white);
+		value[1]=dwayyjud(white);
+		value[2]=dwauljud(white);
+		value[3]=dwaurjud(white);
 switch(Max(value[0],value[1],value[2],value[3]))
 			{
 
@@ -449,7 +449,7 @@ static int wbhal4,wbhal3,wbhal2;//half
 static struct chess wwhite,wwsuccess,wwfull4[10],wwhalf4[10],wwfull3[10],wwhalf3[10],wwfull2[10],wwhalf2[10], wwfull1[10],wwhalf1;
 static int wwful4, wwful3,wwful2,wwful1;//full
 static int wwhal4,wwhal3,wwhal2;//half
-
+//
 static int wbinfo(void){
 wbful4=0,wbful3=0,wbful2=0,wbful1=0,wbhal4=0,wbhal3=0,wbhal2=0;//initialize
 int max=0;
@@ -508,10 +508,10 @@ for(i=x1;i<=x2;i++)
 		{
 		wblack.x=i;
 		wblack.y=j;
-		value[0]=baxxjud(wblack);
-		value[1]=bayyjud(wblack);
-		value[2]=bauljud(wblack);
-		value[3]=baurjud(wblack);
+		value[0]=dbaxxjud(wblack);
+		value[1]=dbayyjud(wblack);
+		value[2]=dbauljud(wblack);
+		value[3]=dbaurjud(wblack);
 
 		switch(Max(value[0],value[1],value[2],value[3]))
 		{
