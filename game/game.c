@@ -7,7 +7,6 @@
 #include "chess-decide.h"//decide which chess pattern the location belong to
 #include "chess-attack.h"//chess attack func battack,wattack
 
-
 /* in init.c:
 1.func init_board,display_board, set_bchess, set_wchess,Max;
 2.array board[SIZE][SIZE]; 
@@ -125,7 +124,6 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 		wvalid=0;
 		if(wnum>0)
 			wwin=wjudge(wchess[wnum-1]);
-
 		if(wwin==1)
 			{
 			printf("\n----------------------------------------\n%s set chess at: %c%d. %s win the game!\n----------------------------------------\n\n",A,wchess[bnum-1].x+'A',SIZE-wchess[bnum-1].y,A);
