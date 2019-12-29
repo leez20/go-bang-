@@ -348,7 +348,6 @@ int M,m=0;
 
 int wjudge(struct chess white)
 {
-int x1,x2, X;
 int value[4]={0};
 int M,m=0;
 		value[0]=waxxjud(white);
