@@ -1,5 +1,7 @@
 //black chess info
 //black xx line single side judge
+#include"game.h"
+
 int bajudxx1(struct chess black){
 int x=black.x,y=black.y;
 int A,B,C,D;

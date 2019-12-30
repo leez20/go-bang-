@@ -1,21 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>//random func
 #include <time.h>//random func
-#include "chess-init.h"//initailize gobang board
-#include "chess-info.h"//enumeration tab
-#include "chess-judge.h"//return line two side info
-#include "chess-decide.h"//decide which chess pattern the location belong to
-#include "chess-attack.h"//chess attack func battack,wattack
-
-/* in init.c:
-1.func init_board,display_board, set_bchess, set_wchess,Max;
-2.array board[SIZE][SIZE]; 
-3.struct chess{
-	int x;
-	int y} bchess[115] wchess[115];
-4.int bnum wnum
-*/
-
+#include"game.h"
 
 int bjudge(struct chess black);//judge wether black chess win or lose(forbid)
 int wjudge(struct chess white);//judge wether white chess win or not
@@ -297,8 +283,27 @@ int M,m=0;
 		switch(Max(value[0],value[1],value[2],value[3]))
 			{
 			case 9:
-				
-				return 1;
+				x1=bajudxx1(black);
+				x2=bajudxx2(black);
+				X=bajud(x1,x2);
+				if(X==0)
+					return -1;
+				x1=bajudyy1(black);
+				x2=bajudyy2(black);
+				X=bajud(x1,x2);
+				if(X==0)
+					return -1;
+				x1=bajudul1(black);
+				x2=bajudul2(black);
+				X=bajud(x1,x2);
+				if(X==0)
+					return -1;
+				x1=bajudur1(black);
+				x2=bajudur2(black);
+				X=bajud(x1,x2);
+				if(X==0)
+					return -1;
+				return 1;//long
 			case 8:
 			
 				for(M=0;M<4;M++)

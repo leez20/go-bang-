@@ -1,3 +1,4 @@
+#include "game.h"
 //for attack
 //return black chess single line two sides info
 
