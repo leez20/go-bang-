@@ -1,7 +1,22 @@
 //for attack 
-#include"game.h"
+int baxxjud(struct chess black);//judge black chess xx line
+int bayyjud(struct chess black);//judge black chess yy line
+int bauljud(struct chess black);//judge black chess up left line
+int baurjud(struct chess black);//judge black chess up right line
+int waxxjud(struct chess white);//judge white chess xx line
+int wayyjud(struct chess white);//judge white chess yy line
+int wauljud(struct chess white);//judge white chess up left line
+int waurjud(struct chess white);//judge white chess up right line
 
-
+//for defence
+int dbaxxjud(struct chess black);//judge black chess xx line
+int dbayyjud(struct chess black);//judge black chess yy line
+int dbauljud(struct chess black);//judge black chess up left line
+int dbaurjud(struct chess black);//judge black chess up right line
+int dwaxxjud(struct chess white);//judge white chess xx line
+int dwayyjud(struct chess white);//judge white chess yy line
+int dwauljud(struct chess white);//judge white chess up left line
+int dwaurjud(struct chess white);//judge white chess up right line
 
 //for attack
 int baxxjud(struct chess black){

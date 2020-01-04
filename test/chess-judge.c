@@ -1,6 +1,4 @@
-#include "game.h"
-//for attack
-//return black chess single line two sides info
+#include"head.h"
 
 int bajud(int x1,int x2){
 switch(x1)
@@ -1123,7 +1121,7 @@ case 30:
 	case 0:return 9;
 	case 1:return 9;
 	case 2:return 0;
-	case 3:return 0;
+	case 3:return 9;
 	case 4:return 9;
 	case 5:return 9;
 	case 6:return 0;
@@ -3369,7 +3367,7 @@ case 30:
 	case 0:return 9;
 	case 1:return 9;
 	case 2:return 0;
-	case 3:return 0;
+	case 3:return 9;
 	case 4:return 9;
 	case 5:return 9;
 	case 6:return 0;

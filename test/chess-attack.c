@@ -1,6 +1,6 @@
 #include <stdlib.h>//random func
 #include <time.h>//random func
-#include"game.h"
+#include"head.h"
 
 static struct chess black,bsuccess,bfull4[10],bhalf4[10],bfull3[10],bhalf3[10],bfull2[10],bhalf2[10], bfull1[10],bhalf1;
 static int bful4,bful3,bful2,bful1;//full
@@ -170,7 +170,7 @@ for(i=x1;i<=x2;i++)
 	}
 return max;
 }
-//
+
 static int winfo(void){
  wful4=0,whal4=0;wful3=0;wful2=0;wful1=0; whal3=0;whal2=0;//initialize
 int max=0;
@@ -218,10 +218,10 @@ for(i=x1;i<=x2;i++)
 		{
 		white.x=i;
 		white.y=j;
-		value[0]=dwaxxjud(white);
-		value[1]=dwayyjud(white);
-		value[2]=dwauljud(white);
-		value[3]=dwaurjud(white);
+		value[0]=waxxjud(white);
+		value[1]=wayyjud(white);
+		value[2]=wauljud(white);
+		value[3]=waurjud(white);
 switch(Max(value[0],value[1],value[2],value[3]))
 			{
 
@@ -302,7 +302,6 @@ max1=binfo();
 max2=winfo();
 int i,j;
 int signal=0;
-int bbful4=0,bbhal4=0,bbful3=0,bbhal3=0,bbful2=0;
 int random=rand();// get random integer
 if(max1>=max2)
 {
@@ -314,245 +313,52 @@ if(max1>=max2)
 		bchess[bnum++]=bsuccess;
 		break;
 	case 8:
-			switch(max2)
-			{
-				case 8:
-					for(i=0;i<bful4;i++)
-						for(j=0;j<wful4;j++)
-						if(bfull4[i].x==wfull4[j].x && bfull4[i].y==wfull4[j].y)
-							{
-							signal=1;
-							bbful4++;
+		switch (max2)
+		{
+			case 8:
+				for(i=0;i<bful4;i++)
+					for(j=0;j<wful4;j++)
+					if(bfull4[i].x==wfull4[j].x && bfull4[i].y==wfull4[j].y)
+						{
+						signal=1;
+						random=i;
+						break;
 						}
-				if(signal)
-				random=random%(bbful4+1);
-				else
-					  random=random%bful4;
-				break;
-		case 7:
-			for(i=0;i<bful4;i++)						
-					for(j=0;j<whal4;j++)
-						if(bfull4[i].x==whalf4[j].x && bfull4[i].y==whalf4[j].y)
-							{
-							signal=1;
-							bbhal4++;
-						}
-				if(signal)
-				random=random%(bbhal4+1);
-				else
-					  random=random%bful4;
-				break;
-		case 6:
-			for(i=0;i<bful4;i++)
-						for(j=0;j<wful3;j++)
-						if(bfull4[i].x==wfull3[j].x && bfull4[i].y==wfull3[j].y)
-							{
-							signal=1;
-							bbful3++;
-						}
-				if(signal)
-				random=random%(bbful3+1);
-				else
-					  random=random%bful4;
-				break;
-		case 5:
-			for(i=0;i<bful4;i++)
-						for(j=0;j<whal3;j++)
-						if(bfull4[i].x==whalf3[j].x && bfull4[i].y==whalf3[j].y)
-							{
-							signal=1;
-							bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-					  random=random%bful4;
-				break;
-		case 4:
-			for(i=0;i<bful4;i++)
-						for(j=0;j<wful2;j++)
-						if(bfull4[i].x==wfull2[j].x && bfull4[i].y==wfull2[j].y)
-							{
-							signal=1;
-							bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-					  random=random%bful4;
-		default:random=random%bful4;break;
-		}
+				if(signal!=1)
+				  random=random%bful4;
+			break;
+			default:random=random%bful4;
+			break;
+		}		
 		board[bfull4[random].y][bfull4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=bfull4[random];
 		break;
 	case 7:
-		switch(max2)
-		{
-	case 7:
-		for(i=0;i<bhal4;i++)
-					for(j=0;j<whal4;j++)
-					if(bhalf4[i].x==whalf4[j].x && bhalf4[i].y==whalf4[j].y)
-						{
-						signal=1;
-						bbhal4++;
-						}
-				if(signal)
-				random=random%(bbhal4+1);
-				else
-				  random=random%bhal4;
-			break;
-	case 6:
-		for(i=0;i<bhal4;i++)
-					for(j=0;j<wful3;j++)
-					if(bhalf4[i].x==wfull3[j].x && bhalf4[i].y==wfull3[j].y)
-						{
-						signal=1;
-						bbful3++;
-						}
-				if(signal)
-				random=random%(bbful3+1);
-				else
-				  random=random%bhal4;
-			break;
-	case 5:
-		for(i=0;i<bhal4;i++)
-					for(j=0;j<whal3;j++)
-					if(bhalf4[i].x==whalf3[j].x && bhalf4[i].y==whalf3[j].y)
-						{
-						signal=1;
-						bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-				  random=random%bhal4;
-			break;
-	case 4:
-		for(i=0;i<bhal4;i++)
-					for(j=0;j<wful2;j++)
-					if(bhalf4[i].x==wfull2[j].x && bhalf4[i].y==wfull2[j].y)
-						{
-						signal=1;
-						bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-				  random=random%bhal4;
-			break;
-	default:random=random%bhal4;break;
-	}
+		random=random%bhal4;
 		board[bhalf4[random].y][bhalf4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=bhalf4[random];
 		break;
 	case 6:
-		switch(max2)
-			{
-		case 6:
-			for(i=0;i<bful3;i++)
-						for(j=0;j<wful3;j++)
-						if(bfull3[i].x==wfull3[j].x && bfull3[i].y==wfull3[j].y)
-							{
-							signal=1;
-							bbful3++;
-						}
-				if(signal)
-				random=random%(bbful3+1);
-				else
-					  random=random%bful3;
-				break;
-		case 5:
-			for(i=0;i<bful3;i++)
-						for(j=0;j<whal3;j++)
-						if(bfull3[i].x==whalf3[j].x && bfull3[i].y==whalf3[j].y)
-							{
-							signal=1;
-							bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-					  random=random%bful3;
-				break;
-		case 4:
-			for(i=0;i<bful3;i++)
-						for(j=0;j<wful2;j++)
-						if(bfull3[i].x==wfull2[j].x && bfull3[i].y==wfull2[j].y)
-							{
-							signal=1;
-							bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-					  random=random%bful3;
-				break;
-		default:random=random%bful3;break;
-		}
+		random=random%bful3;
 		board[bfull3[random].y][bfull3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=bfull3[random];
 		break;
 	case 5:
-		switch(max2)
-		{
-	case 5:
-		for(i=0;i<bhal3;i++)
-					for(j=0;j<whal3;j++)
-					if(bhalf3[i].x==whalf3[j].x && bhalf3[i].y==whalf3[j].y)
-						{
-						signal=1;
-						bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-				  random=random%bhal3;
-			break;
-	case 4:
-		for(i=0;i<bhal3;i++)
-					for(j=0;j<wful2;j++)
-					if(bhalf3[i].x==wfull2[j].x && bhalf3[i].y==wfull2[j].y)
-						{
-						signal=1;
-						bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-				  random=random%bhal3;
-			break;
-	default:random=random%bhal3;break;
-	}
+		random=random%bhal3;
 		board[bhalf3[random].y][bhalf3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=bhalf3[random];
 		break;
 	case 4:
-		switch(max2)
-			{
-		case 4:
-			for(i=0;i<bful2;i++)
-						for(j=0;j<wful2;j++)
-						if(bfull2[i].x==wfull2[j].x && bfull2[i].y==wfull2[j].y)
-							{
-							signal=1;
-							bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-					  random=random%bful2;
-		default:random=random%bful2;break;
-		}
+		random=random%bful2;
 		board[bfull2[random].y][bfull2[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=bfull2[random];
 		break;
 	case 3:
-		
 		random=random%bhal2;
 		board[bhalf2[random].y][bhalf2[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
@@ -583,25 +389,25 @@ else
 		bchess[bnum++]=wsuccess;
 		break;
 	case 8:
-		random=(random-1)%wful4;
+		random=random%wful4;
 		board[wfull4[random].y][wfull4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=wfull4[random];
 		break;
 	case 7:
-		random=(random-1)%whal4;
+		random=random%whal4;
 		board[whalf4[random].y][whalf4[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=whalf4[random];
 		break;
 	case 6:
-		random=(random-1)%wful3;
+		random=random%wful3;
 		board[wfull3[random].y][wfull3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[wnum-1].x]=10;
 		bchess[bnum++]=wfull3[random];
 		break;
 	case 5:
-		random=(random-1)%whal3;
+		random=random%whal3;
 		board[whalf3[random].y][whalf3[random].x]=11;
 		board[bchess[bnum-1].y][bchess[bnum-1].x]=10;
 		bchess[bnum++]=whalf3[random];
@@ -646,7 +452,7 @@ static int wbhal4,wbhal3,wbhal2;//half
 static struct chess wwhite,wwsuccess,wwfull4[10],wwhalf4[10],wwfull3[10],wwhalf3[10],wwfull2[10],wwhalf2[10], wwfull1[10],wwhalf1;
 static int wwful4, wwful3,wwful2,wwful1;//full
 static int wwhal4,wwhal3,wwhal2;//half
-//
+
 static int wbinfo(void){
 wbful4=0,wbful3=0,wbful2=0,wbful1=0,wbhal4=0,wbhal3=0,wbhal2=0;//initialize
 int max=0;
@@ -705,10 +511,10 @@ for(i=x1;i<=x2;i++)
 		{
 		wblack.x=i;
 		wblack.y=j;
-		value[0]=dbaxxjud(wblack);
-		value[1]=dbayyjud(wblack);
-		value[2]=dbauljud(wblack);
-		value[3]=dbaurjud(wblack);
+		value[0]=baxxjud(wblack);
+		value[1]=bayyjud(wblack);
+		value[2]=bauljud(wblack);
+		value[3]=baurjud(wblack);
 
 		switch(Max(value[0],value[1],value[2],value[3]))
 		{
@@ -934,7 +740,6 @@ return max;
 }
 
 void wattack(void){
-int bbful4=0,bbhal4=0,bbful3=0,bbhal3=0,bbful2=0;
 int max1=0,max2=0;
 max1=wbinfo();
 max2=wwinfo();
@@ -959,239 +764,45 @@ if(max2>=max1)
 					if(wwfull4[i].x==wbfull4[j].x && wwfull4[i].y==wbfull4[j].y)
 						{
 						signal=1;
-						bbful4++;
+						random=i;
+						break;
 						}
-				if(signal)
-				random=random%(bbful4+1);
-				else
+				if(signal!=1)
 				  random=random%wwful4;
 			break;
-			case 7:
-				for(i=0;i<wwful4;i++)
-					for(j=0;j<wbhal4;j++)
-					if(wwfull4[i].x==wbhalf4[j].x && wwfull4[i].y==wbhalf4[j].y)
-						{
-						signal=1;
-						bbhal4++;
-						}
-				if(signal)
-				random=random%(bbhal4+1);
-				else
-				  random=random%wwful4;
-				break;
-			case 6:
-				for(i=0;i<wwful4;i++)
-					for(j=0;j<wbful3;j++)
-					if(wwfull4[i].x==wbfull3[j].x && wwfull4[i].y==wbfull3[j].y)
-						{
-						signal=1;
-						bbful3++;
-						}
-				if(signal)
-				random=random%(bbful3+1);
-				else
-				  random=random%wwful4;
+			default:random=random%wwful4;
 			break;
-			case 5:
-				for(i=0;i<wwful4;i++)
-					for(j=0;j<wbhal3;j++)
-					if(wwfull4[i].x==wbhalf3[j].x && wwfull4[i].y==wbhalf3[j].y)
-						{
-						signal=1;
-						bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-				  random=random%wwful4;
-			break;
-			case 4:
-				for(i=0;i<wwful4;i++)
-					for(j=0;j<wbful2;j++)
-					if(wwfull4[i].x==wbfull2[j].x && wwfull4[i].y==wbfull2[j].y)
-						{
-						signal=1;
-						bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-				  random=random%wwful4;
-			break;
-			default:random=random%wwful4;break;
 		}	
 		board[wwfull4[random].y][wwfull4[random].x]=13;
 		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
 		wchess[wnum++]=wwfull4[random];
 		break;
 	case 7:
-		switch (max1)
-		{
-			case 7:
-				for(i=0;i<wwhal4;i++)
-					for(j=0;j<wbhal4;j++)
-					if(wwhalf4[i].x==wbhalf4[j].x && wwhalf4[i].y==wbhalf4[j].y)
-						{
-						signal=1;
-						bbhal4++;
-						}
-				if(signal)
-				random=random%(bbhal4+1);
-				else
-				  random=random%wwhal4;
-				break;
-			case 6:
-				for(i=0;i<wwhal4;i++)
-					for(j=0;j<wbful3;j++)
-					if(wwhalf4[i].x==wbfull3[j].x && wwhalf4[i].y==wbfull3[j].y)
-						{
-						signal=1;
-						bbful3++;
-						}
-				if(signal)
-				random=random%(bbful3+1);
-				else
-				  random=random%wwhal4;
-			break;
-			case 5:
-				for(i=0;i<wwhal4;i++)
-					for(j=0;j<wbhal3;j++)
-					if(wwhalf4[i].x==wbhalf3[j].x && wwhalf4[i].y==wbhalf3[j].y)
-						{
-						signal=1;
-						bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-				  random=random%wwhal4;
-			break;
-			case 4:
-				for(i=0;i<wwhal4;i++)
-					for(j=0;j<wbful2;j++)
-					if(wwhalf4[i].x==wbfull2[j].x && wwhalf4[i].y==wbfull2[j].y)
-						{
-						signal=1;
-						bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-				  random=random%wwhal4;
-			break;
-			default:random=random%wwhal4;break;
-		}	
+		random=random%wwhal4;
 		board[wwhalf4[random].y][wwhalf4[random].x]=13;
 		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
 		wchess[wnum++]=wwhalf4[random];
 		break;
-	case 6:	
-		switch (max1)
-		{
-			case 6:
-				for(i=0;i<wwful3;i++)
-					for(j=0;j<wbful3;j++)
-					if(wwfull3[i].x==wbfull3[j].x && wwfull3[i].y==wbfull3[j].y)
-						{
-						signal=1;
-						bbful3++;
-						}
-				if(signal)
-				random=random%(bbful3+1);
-				else
-				  random=random%wwful3;
-			break;
-			case 5:
-				for(i=0;i<wwful3;i++)
-					for(j=0;j<wbhal3;j++)
-					if(wwfull3[i].x==wbhalf3[j].x && wwfull3[i].y==wbhalf3[j].y)
-						{
-						signal=1;
-						bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-				  random=random%wwful3;
-			break;
-			case 4:
-				for(i=0;i<wwful3;i++)
-					for(j=0;j<wbful2;j++)
-					if(wwfull3[i].x==wbfull2[j].x && wwfull3[i].y==wbfull2[j].y)
-						{
-						signal=1;
-						bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-				  random=random%wwful3;
-			break;
-			default:random=random%wwful3;break;
-		}	
+	case 6:
+		random=random%wwful3;
 		board[wwfull3[random].y][wwfull3[random].x]=13;
 		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
 		wchess[wnum++]=wwfull3[random];
 		break;
 	case 5:
-		switch (max1)
-		{
-			case 5:
-				for(i=0;i<wwhal3;i++)
-					for(j=0;j<wbhal3;j++)
-					if(wwhalf3[i].x==wbhalf3[j].x && wwhalf3[i].y==wbhalf3[j].y)
-						{
-						signal=1;
-						bbhal3++;
-						}
-				if(signal)
-				random=random%(bbhal3+1);
-				else
-				  random=random%wwhal3;
-			break;
-			case 4:
-				for(i=0;i<wwhal3;i++)
-					for(j=0;j<wbful2;j++)
-					if(wwhalf3[i].x==wbfull2[j].x && wwhalf3[i].y==wbfull2[j].y)
-						{
-						signal=1;
-						bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-				  random=random%wwhal3;
-			break;
-			default:random=random%wwhal3;break;
-		}	
+		random=random%wwhal3;
 		board[wwhalf3[random].y][wwhalf3[random].x]=13;
 		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;;
 		wchess[wnum++]=whalf3[random];
 		break;
 	case 4:
-		switch (max1)
-		{
-			case 4:
-				for(i=0;i<wwful2;i++)
-					for(j=0;j<wbful2;j++)
-					if(wwfull2[i].x==wbfull2[j].x && wwfull2[i].y==wbfull2[j].y)
-						{
-						signal=1;
-						bbful2++;
-						}
-				if(signal)
-				random=random%(bbful2+1);
-				else
-				  random=random%wwful2;
-			break;
-			default:random=random%wwful2;break;
-		}	
+		random=random%wwful2;
 		board[wwfull2[random].y][wwfull2[random].x]=13;
 		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
 		wchess[wnum++]=wwfull2[random];
 		break;
 	case 3:
-		random=random%wwhal2;	
+		random=random%wwhal2;
 		board[wwhalf2[random].y][wwhalf2[random].x]=13;
 		board[wchess[wnum-1].y][wchess[wnum-1].x]=12;
 		wchess[wnum++]=wwhalf2[random];

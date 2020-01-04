@@ -1,9 +1,19 @@
 //┏ ┓┗ ┛┳ ┻ ╋ ┫┣ ● ○ ▼ △ ▲
 
-#include <stdio.h>
-#include <stdlib.h>//random func
-#include <time.h>//random func
-#include"game.h"
+
+#define SIZE 15//board size
+
+ int board[SIZE][SIZE]={0};
+
+struct chess {//chess address
+int x;
+int y;
+};
+
+struct chess bchess[113];//half sife of boar225
+struct chess wchess[113];
+int bnum=0,wnum=0;
+
 
 void init_board(void)//initailize the board
 {

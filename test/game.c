@@ -1,21 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>//random func
 #include <time.h>//random func
-#include "chess-init.h"//initailize gobang board
-#include "chess-info.h"//enumeration tab
-#include "chess-judge.h"//return line two side info
-#include "chess-decide.h"//decide which chess pattern the location belong to
-#include "chess-attack.h"//chess attack func battack,wattack
-
-/* in init.c:
-1.func init_board,display_board, set_bchess, set_wchess,Max;
-2.array board[SIZE][SIZE]; 
-3.struct chess{
-	int x;
-	int y} bchess[115] wchess[115];
-4.int bnum wnum
-*/
-
+#include"head.h"
 
 int bjudge(struct chess black);//judge wether black chess win or lose(forbid)
 int wjudge(struct chess white);//judge wether white chess win or not
@@ -33,6 +19,7 @@ char B[20]="\0";//B name
 
 
 	init_board();//initailize gobgang board
+	system("clear");
 	display_board();
 printf("\n------------------------------------------------------------------\nWelcome to play gobang game! Which pattern do you want to choose?\n\n");
 while(pattern!=0 && pattern!=1 && pattern!=2)
@@ -82,7 +69,10 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",B,wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
 		bvalid=set_bchess(A);
 		if(bvalid)
+		{
+		system("clear");
 		display_board();
+		}
 	else 
 		{
 		printf("\n%s give up the game!\n",A);		
@@ -106,7 +96,10 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",A,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
 		wvalid=set_wchess(B);
 		if(wvalid)
+		{
+		system("clear");
 		display_board();
+		}
 	else 
 		{
 		printf("\n%s give up the game!\n",B);		
@@ -133,7 +126,10 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n",A,wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
 		bvalid=set_bchess(B);
 		if(bvalid)
+		{
+		system("clear");
 		display_board();
+		}
 	else 
 		{
 		printf("\n%s give up the game!\n",B);		
@@ -157,7 +153,10 @@ printf("\n\n\n----------------------------------------\nWhich side does %s want 
 		printf("\n----------------------------------------\n%s set chess at: %c%d.\n----------------------------------------\n\n",B,bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
 		wvalid=set_wchess(A);
 		if(wvalid)
+		{
+		system("clear");
 		display_board();
+		}
 	else 
 		{
 		printf("\n%s give up the game!\n",A);		
@@ -192,6 +191,7 @@ for (j=0;j<20 && (c=getchar())!='\n';j++)
 		bnum=0;
 		bchess[bnum].x=7;
 		bchess[bnum++].y=7;
+		system("clear");
 		display_board();
 
 		for(i=1;i<SIZE*SIZE+1;i++)
@@ -220,13 +220,17 @@ for (j=0;j<20 && (c=getchar())!='\n';j++)
 		printf("\n----------------------------------------\nBlack-chess side set chess at: %c%d.\n----------------------------------------\n",bchess[bnum-1].x+'A',SIZE-bchess[bnum-1].y);
 		wvalid=set_wchess(A);
 		if(wvalid)
+		{
+		system("clear");
 		display_board();
+		}
 	else 
 		{
 		printf("\n%s give up the game!\n",A);		
 		break;
 		}
 		battack();
+		system("clear");
 		display_board();
 		}
 
@@ -262,13 +266,17 @@ for (j=0;j<20 && (c=getchar())!='\n';j++)
 			printf("\n----------------------------------------\nWhite-chess side set chess at: %c%d.\n----------------------------------------\n",wchess[wnum-1].x+'A',SIZE-wchess[wnum-1].y);
 		bvalid=set_bchess(A);
 		if(bvalid)
+		{
+		system("clear");
 		display_board();
+		}
 	else 
 		{
 		printf("\n%s give up the game!\n",A);		
 		break;
 		}
 		wattack();
+		system("clear");
 		display_board();
 		}
 
